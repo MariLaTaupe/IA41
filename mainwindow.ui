@@ -76,7 +76,7 @@
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="ClickableLabel" name="label_2">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -89,10 +89,10 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="ClickableLabel" name="label_3">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -105,10 +105,10 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="ClickableLabel" name="label_4">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -121,10 +121,10 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="ClickableLabel" name="label_5">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -137,10 +137,10 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="ClickableLabel" name="label_6">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -153,10 +153,10 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_7">
+   <widget class="ClickableLabel" name="label_7">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -169,10 +169,10 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_8">
+   <widget class="ClickableLabel" name="label_8">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -185,10 +185,10 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_9">
+   <widget class="ClickableLabel" name="label_9">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -201,10 +201,10 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
-   <widget class="QLabel" name="label_10">
+   <widget class="ClickableLabel" name="label_10">
     <property name="geometry">
      <rect>
       <x>440</x>
@@ -217,7 +217,7 @@
      <enum>QFrame::Box</enum>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
     </property>
    </widget>
   </widget>
@@ -261,6 +261,16 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ClickableLabel</class>
+   <extends>QLabel</extends>
+   <header>clickablelabel.h</header>
+   <slots>
+    <signal>clicked()</signal>
+   </slots>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
