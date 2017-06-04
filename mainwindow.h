@@ -43,7 +43,10 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
-    int pionLabel2;
+
+    int nbPionsLabel2;
+    int pionsLabel2[5];
+
     int pionLabel3;
     int pionLabel4;
     int pionLabel5;

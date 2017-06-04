@@ -1,4 +1,6 @@
 #include <iostream>
+#include <time.h> //Ne pas oublier d'inclure le fichier time.h
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "nouvellepartie.h"
@@ -11,7 +13,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    pionLabel2 = 1;
+    nbPionsLabel2 = 1;
+    pionsLabel2[0] = -1;
+    pionsLabel2[1] = -1;
+    pionsLabel2[2] = -1;
+    pionsLabel2[3] = -1;
+    pionsLabel2[4] = -1;
+
     pionLabel3 = 1;
     pionLabel4 = 1;
     pionLabel5 = 1;
@@ -33,18 +41,37 @@ int MainWindow::displayLabel2(){
         wid = ui->label_2->geometry().width();
         hei = ui->label_2->geometry().height();
 
+
+        srand(time(NULL)); // initialisation de rand
+
         QPixmap pixmap(wid,hei);
         pixmap.fill(QColor("white"));
         int i=0;
         QPainter painter(&pixmap);
-        painter.setBrush(QBrush(Qt::green));
 
-        for(i=0;i<pionLabel2;++i){
-            painter.drawEllipse( 60, 130 - 25*i, 80, 50);
+        if(nbPionsLabel2<6 && nbPionsLabel2>0){
+            for(i=0;i<nbPionsLabel2;++i){
+                if (pionsLabel2[i] == -1){
+                    int al = rand()%201;
+                    if(al < 101){
+                        pionsLabel2[i] = 0;
+                    }else{
+                        pionsLabel2[i] = 1;
+                    }
+                }
+
+                if(pionsLabel2[i] == 1){
+                    painter.setBrush(QBrush(Qt::red));
+                }else{
+                    painter.setBrush(QBrush(Qt::blue));
+                }
+
+                painter.drawEllipse( 60, 130 - 25*i, 80, 50);
+            }
+
+            ui->label_2->setPixmap(pixmap);
+            nbPionsLabel2++;
         }
-
-        ui->label_2->setPixmap(pixmap);
-        pionLabel2++;
 
         return 0;
 }
