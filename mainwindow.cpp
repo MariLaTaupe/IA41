@@ -1,13 +1,25 @@
+#include <iostream>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "nouvellepartie.h"
 #include "ui_nouvellepartie.h"
+using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    pionLabel2 = 1;
+    pionLabel3 = 1;
+    pionLabel4 = 1;
+    pionLabel5 = 1;
+    pionLabel6 = 1;
+    pionLabel7 = 1;
+    pionLabel8 = 1;
+    pionLabel9 = 1;
+    pionLabel10 = 1;
 }
 
 MainWindow::~MainWindow()
@@ -23,11 +35,16 @@ int MainWindow::displayLabel2(){
 
         QPixmap pixmap(wid,hei);
         pixmap.fill(QColor("white"));
+        int i=0;
         QPainter painter(&pixmap);
-
         painter.setBrush(QBrush(Qt::green));
-        painter.drawEllipse( 60, 130, 80, 50);
+
+        for(i=0;i<pionLabel2;++i){
+            painter.drawEllipse( 60, 130 - 25*i, 80, 50);
+        }
+
         ui->label_2->setPixmap(pixmap);
+        pionLabel2++;
 
         return 0;
 }

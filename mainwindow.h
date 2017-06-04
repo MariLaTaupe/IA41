@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QPainter>
+#include <QPixmap>
 #include "nouvellepartie.h"
 
 
@@ -42,6 +43,15 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
+    int pionLabel2;
+    int pionLabel3;
+    int pionLabel4;
+    int pionLabel5;
+    int pionLabel6;
+    int pionLabel7;
+    int pionLabel8;
+    int pionLabel9;
+    int pionLabel10;
 };
 
 #endif // MAINWINDOW_H
