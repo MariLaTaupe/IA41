@@ -16,43 +16,6 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="palette">
-   <palette>
-    <active>
-     <colorrole role="Window">
-      <brush brushstyle="SolidPattern">
-       <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
-       </color>
-      </brush>
-     </colorrole>
-    </active>
-    <inactive>
-     <colorrole role="Window">
-      <brush brushstyle="SolidPattern">
-       <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
-       </color>
-      </brush>
-     </colorrole>
-    </inactive>
-    <disabled>
-     <colorrole role="Window">
-      <brush brushstyle="SolidPattern">
-       <color alpha="255">
-        <red>255</red>
-        <green>255</green>
-        <blue>255</blue>
-       </color>
-      </brush>
-     </colorrole>
-    </disabled>
-   </palette>
-  </property>
   <property name="windowTitle">
    <string>Pogo - Menu</string>
   </property>
@@ -227,7 +190,7 @@
      <x>0</x>
      <y>0</y>
      <width>692</width>
-     <height>21</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -251,12 +214,12 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionNouvelle_Partie">
    <property name="text">
-    <string>Nouvelle Partie</string>
+    <string>&amp;Nouvelle Partie</string>
    </property>
   </action>
   <action name="actionQuitter">
    <property name="text">
-    <string>Quitter</string>
+    <string>&amp;Quitter</string>
    </property>
   </action>
  </widget>
