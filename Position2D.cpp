@@ -1,4 +1,5 @@
 #include<iostream>
+
 #include"Position2D.h"
 
 Position2D& Position2D::operator=(const Position2D& p)

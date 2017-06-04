@@ -1,6 +1,6 @@
 #include<iostream>
 
-#include"Position2D.cpp"
+#include"Position2D.h"
 
 using namespace std;
 
