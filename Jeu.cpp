@@ -1,5 +1,8 @@
 #include<iostream>
+#include<math.h>
+
 #include"Jeu.h"
+
 
 /**
  * Constructeur par défaut.
@@ -103,6 +106,54 @@ bool Jeu::moveStack(stack<Pion> &stack1, stack<Pion> &stack2, int n)
 
 }
 
+/**
+ * Teste si un mouvement de pile est autorise.
+ * @param stack1 pile sur laquelle on preleve des pion.
+ * @param stack2 pile sur laquelle on depose des jetons
+ * @param n nombre de pions a deplacer
+ * @param playerColor couleur du joueur qui souhaite deplacer les pions
+ * @return vrai si le mouvement est valide, faus sinon
+ */
+bool Jeu::autorizedMove(Position2D &stack1, Position2D &stack2, int n, Color playerColor) {
+    //Si la valeur de n est correcte
+    // (comprise entre 1 et 3, et inferieure ou egale au nombre de pions de la pile a debiter)
+    if (n >= 1 && n <= 3 && _board[3*stack1.getY()+stack1.getX()].size() >= n) {
+        //Si le pion superieur est de la couleur du joueur (couleur passee en parametre)
+        if (_board[3*stack1.getY()+stack1.getX()].top().getColor() == playerColor) {
+            //Si la distance entre les pions au carre vaut n, le mouvement est bon.
+            if (fabs((stack1.getX() - stack2.getX())) +
+                     fabs((stack1.getY() - stack2.getY())) == n)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+/**bool Jeu::autorizedMove(stack<Pion> &stack1, stack<Pion> &stack2, int n, Color playerColor) {
+    //Si la valeur de n est correcte
+    // (comprise entre 1 et 3, et inferieure ou egale au nombre de pions de la pile a debiter)
+    if(n>=1 && n<=3 && stack1.size()>=n)
+    {
+        //Si le pion superieur est de la couleur du joueur (couleur passee en parametre)
+        if(stack1.top().getColor()==playerColor)
+        {
+            //Si la distance entre les pions au carre vaut n, le mouvement est bon.
+            if( fabs((stack1.top().getPosition().getX()-stack2.top().getPosition().getX()) +
+                     (stack1.top().getPosition().getY()-stack2.top().getPosition().getY()))==n)
+            {
+                return true;
+            }
+        }
+    }
+    return false;
+}*/
+
+/**
+ * Verifie si le jeu est termine ou non, et su oui, affiche le joueur gagnant
+ * (Joueur 1 : pions blancs, Joueur 2 : pions noirs)
+ * @return vrai si tout les pions superieurs ont la meme couleur
+ */
 bool Jeu::isItEnd()
 {
     int i=0, indicator=0;
