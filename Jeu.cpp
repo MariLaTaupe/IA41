@@ -65,6 +65,7 @@ vector<stack<Pion>> * Jeu::getBoard()
 
 /**
  * Deplace les n pions du dessus de la pile stack1, sur une autre pile stack2.
+ * Ne verifie pas si le déplacement est autorisé, vérifie juste si on le nombre de pion à déplacer est correct.
  * @param stack1 : pile d'ou proviennent les n pion a déplacer.
  * @param stack2  : pile ou doivent etre deplaces les n pions.
  * @param n : nombre de pion a deplacer, normalement compris entre 1 et 3.
@@ -72,26 +73,84 @@ vector<stack<Pion>> * Jeu::getBoard()
  */
 bool Jeu::moveStack(stack<Pion> &stack1, stack<Pion> &stack2, int n)
 {
-    if(stack1.size()>=n)
+    if(n>=1 && n<=3)
     {
-        stack<Pion> s; //Pile pour stocker les n pions à deplacer
-        //On depile les n premiers pions de stack1 et on les empile dans s.
-        for(int i=0; i<n; i++)
+        if(stack1.size()>=n)
         {
-            s.push((Pion &&) stack1.top());
-            stack1.pop();
+            stack<Pion> s; //Pile pour stocker les n pions à deplacer
+            //On depile les n premiers pions de stack1 et on les empile dans s.
+            for(int i=0; i<n; i++)
+            {
+                s.push((Pion &&) stack1.top());
+                stack1.pop();
+            }
+            //On depile les n premiers pions de s et on les empile dans stack2.
+            for(int i=0; i<n; i++)
+            {
+                stack2.push((Pion &&) s.top());
+                s.pop();
+            }
+            return true; //On retourne vrai une fois les n pions deplaces.
         }
-        //On depile les n premiers pions de s et on les empile dans stack2.
-        for(int i=0; i<n; i++)
+        else
         {
-            stack2.push((Pion &&) s.top());
-            s.pop();
+            return false;
         }
-        return true; //On retourne vrai une fois les n pions deplaces.
+    } else
+    {
+        return false;
+    }
+
+}
+
+bool Jeu::isItEnd()
+{
+    int i=0, indicator=0;
+    Color  c = WHITE;
+    //Tant que l'on a pas parcouru toutes les piles, et que l'indicateur est inferieur a 2
+    while(i<9 && indicator<2)
+    {
+        //Si la pile n'est pas vide
+        if(!_board[i].empty())
+        {
+            //Si l'indicateur vaut zero, il s'agit du premier pion que l'on rencontre,
+            //donc on change la valeur de color, jusque là initialisee par defaut.
+            if(indicator==0)
+            {
+                indicator++;
+                c=_board[i].top().getColor();
+            }
+            else
+            {
+                //Sinon, si la couleur du pion du dessus est differente de la valeur de color,
+                if(_board[i].top().getColor()!=c && indicator==1)
+                {
+                    //On incremente l'indicateur pour signifier qu'il y a au moins deux piles
+                    // avec un pion superieur de couleur differente
+                    indicator++;
+                }
+            }
+        }
+        i++;
+    }
+    //Si la valeur de l'indicateur est superieure a 1, alors le jeu n'est pas fini.
+    if(indicator>1)
+    {
+        return false;
     }
     else
     {
-        return false;
+        //Sinon, toute les colonnes ont un pion superieur de la meme couleur, le jeu est termine,
+        //et color contient la couleur du gagnant (Blanc : joueur 1, Noir : joueur 2)
+        if(c==WHITE)
+        {
+            cout << "\nLe joueur 1 a gagne";
+        }
+        else
+        {
+            cout << "\nLe joueur 2 a gagne";
+        }
+        return true;
     }
 }
 

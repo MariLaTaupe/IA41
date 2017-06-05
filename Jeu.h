@@ -17,11 +17,9 @@ public:
     Jeu(Jeu& j);
     ~Jeu(){};
     Jeu& operator=(Jeu& j);
-
     vector<stack<Pion>> * getBoard();
-
     bool moveStack(stack<Pion> &stack1, stack<Pion> &stack2, int n);
-
+    bool isItEnd();
     void printGame();
 
 
