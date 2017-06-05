@@ -47,14 +47,29 @@ private:
     int nbPionsLabel2;
     int pionsLabel2[5];
 
-    int pionLabel3;
-    int pionLabel4;
-    int pionLabel5;
-    int pionLabel6;
-    int pionLabel7;
-    int pionLabel8;
-    int pionLabel9;
-    int pionLabel10;
+    int nbPionsLabel3;
+    int pionsLabel3[5];
+
+    int nbPionsLabel4;
+    int pionsLabel4[5];
+
+    int nbPionsLabel5;
+    int pionsLabel5[5];
+
+    int nbPionsLabel6;
+    int pionsLabel6[5];
+
+    int nbPionsLabel7;
+    int pionsLabel7[5];
+
+    int nbPionsLabel8;
+    int pionsLabel8[5];
+
+    int nbPionsLabel9;
+    int pionsLabel9[5];
+
+    int nbPionsLabel10;
+    int pionsLabel10[5];
 };
 
 #endif // MAINWINDOW_H
