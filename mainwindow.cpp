@@ -9,7 +9,7 @@ using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow) // TODO : initialiser à partir du modèle
 {
     ui->setupUi(this);
 
@@ -91,6 +91,8 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+// TODO : display en fonction du modèle
 
 int MainWindow::displayLabel2(){ // Case en haut à gauche
     int wid,hei;
@@ -442,6 +444,8 @@ int MainWindow::displayLabel10(){ // Case au millieu à droite
 
     return 0;
 }
+
+// TODO : envoyer au modèle
 
 void MainWindow::on_label_2_clicked() // Case en haut à gauche
 {
