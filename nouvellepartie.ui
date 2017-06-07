@@ -1,19 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <author/>
- <comment/>
- <exportmacro/>
  <class>NouvellePartie</class>
  <widget class="QDialog" name="NouvellePartie">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>476</width>
     <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Nouvelle Partie</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
@@ -31,8 +29,127 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>428</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="acceuil_label">
+      <property name="text">
+       <string>Bienvenue dans notre jeu de Pogo ! Veuillez sélectionner vos joueurs :</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLabel" name="joueur1_label">
+      <property name="text">
+       <string>Joueur 1 :</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="joueur1_comboBox">
+      <item>
+       <property name="text">
+        <string>Humain</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>IA faible</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>IA moyenne</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>IA forte</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QLabel" name="joueur2_label">
+      <property name="text">
+       <string>Joueur 2 :</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QComboBox" name="joueur2_comboBox">
+      <item>
+       <property name="text">
+        <string>Humain</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>IA faible</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>IA moyenne</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>IA forte</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
  </widget>
- <pixmapfunction/>
  <resources/>
  <connections>
   <connection>

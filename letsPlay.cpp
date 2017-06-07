@@ -9,7 +9,7 @@
 /** Remarques sur le plateau de jeu **/
 /**
  * Le plateau de jeu fonctionne suivant deux axes, x oriente de gauche à droite, et y de haut en bas.
- * Il s'agit en théorie d'un tableau de 3*3 piles de pions, represente en realite par un tableau vertical de 9 cases.
+ * Il s'agit en théorie d'un tableau de 3*3 piles de pions, represente en realite par un tableau horizontal de 9 cases.
  * Pour la case (2, 3), on prendra donc la case 3*3+2 soit la case 8.
  */
 
