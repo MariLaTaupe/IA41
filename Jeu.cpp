@@ -114,7 +114,7 @@ bool Jeu::moveStack(stack<Pion> &stack1, stack<Pion> &stack2, int n)
  * @param playerColor couleur du joueur qui souhaite deplacer les pions
  * @return vrai si le mouvement est valide, faus sinon
  */
-bool Jeu::autorizedMove(Position2D &stack1, Position2D &stack2, int n, Color playerColor) {
+bool Jeu::autorizedMove(const Position2D &stack1, const Position2D &stack2, int n, Color playerColor) {
     //Si la valeur de n est correcte
     // (comprise entre 1 et 3, et inferieure ou egale au nombre de pions de la pile a debiter)
     if (n >= 1 && n <= 3 && _board[3*stack1.getY()+stack1.getX()].size() >= n) {

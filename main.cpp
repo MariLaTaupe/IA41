@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
     w.show();
     NouvellePartie n;
     n.show();
-
     return a.exec();
 
     /**Position2D p(2, 3);
@@ -39,5 +38,6 @@ int main(int argc, char *argv[])
     Position2D p1(1, 0);
     Position2D p2(0, 1);
     cout << "\n" << jeu.autorizedMove(p1, p2, 2, WHITE);
+    letsPlay(p1, p2, 3, WHITE);
     return 0;*/
 }
