@@ -17,9 +17,7 @@ int main(int argc, char *argv[])
     NouvellePartie n;
     n.show();
 
-    return a.exec();
-
-    /**Position2D p(2, 3);
+    Position2D p(2, 3);
     p.printCoordinates();
     Jeu jeu;
     jeu.printGame();
@@ -39,5 +37,7 @@ int main(int argc, char *argv[])
     Position2D p1(1, 0);
     Position2D p2(0, 1);
     cout << "\n" << jeu.autorizedMove(p1, p2, 2, WHITE);
-    return 0;*/
+
+
+    return a.exec();
 }

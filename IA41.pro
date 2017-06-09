@@ -27,12 +27,20 @@ SOURCES += \
     clickablelabel.cpp \
     nouvellepartie.cpp \
     mainwindow.cpp \
-    main.cpp
+    main.cpp \
+    Jeu.cpp \
+    letsPlay.cpp \
+    Pion.cpp \
+    Position2D.cpp
 
 HEADERS += \
     clickablelabel.h \
     nouvellepartie.h \
-    mainwindow.h
+    mainwindow.h \
+    Jeu.h \
+    Pion.h \
+    Position2D.h \
+    letsPLay.h
 
 FORMS += \
         mainwindow.ui \
