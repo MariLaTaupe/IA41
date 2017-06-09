@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
     Position2D p2(0, 1);
     cout << "\n" << jeu.autorizedMove(p1, p2, 2, WHITE);
 
-
+    letsPlay(p1, p2, 3, WHITE);
     return a.exec();
+    
 }
