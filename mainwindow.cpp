@@ -452,8 +452,8 @@ int MainWindow::displayLabel10(){ // Case au millieu à droite
 
 void MainWindow::on_label_2_clicked() // Case en haut à gauche
 {
-    ChoixPions c;
-    c.show();
+    ChoixPions *c = new ChoixPions;
+    c->show();
     //displayLabel2();
 }
 
