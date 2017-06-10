@@ -1,10 +1,11 @@
-#include "mainwindow.h"
-#include "nouvellepartie.h"
-
 #include <QApplication>
 #include<iostream>
+#include <cstdio>
 
-#include "letsPLay.h"
+//#include "letsPlay.h"
+#include "mainwindow.h"
+#include "nouvellepartie.h"
+//#include "Jeu.h"
 
 using namespace std;
 

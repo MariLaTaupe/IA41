@@ -29,9 +29,9 @@ SOURCES += \
     mainwindow.cpp \
     main.cpp \
     Jeu.cpp \
-    letsPlay.cpp \
     Pion.cpp \
-    Position2D.cpp
+    Position2D.cpp \
+    choixpions.cpp
 
 HEADERS += \
     clickablelabel.h \
@@ -40,9 +40,11 @@ HEADERS += \
     Jeu.h \
     Pion.h \
     Position2D.h \
-    letsPLay.h
+    letsPLay.h \
+    choixpions.h
 
 FORMS += \
         mainwindow.ui \
     mainwindow.ui \
-    nouvellepartie.ui
+    nouvellepartie.ui \
+    choixpions.ui

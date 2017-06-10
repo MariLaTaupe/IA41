@@ -5,6 +5,8 @@
 #include <QPainter>
 #include <QPixmap>
 #include "nouvellepartie.h"
+#include "choixpions.h"
+#include "Jeu.h"
 
 
 namespace Ui {
@@ -71,5 +73,7 @@ private:
     int nbPionsLabel10;
     int pionsLabel10[5];
 };
+
+void letsPlay(const Position2D& firstStack,  const Position2D& secondStack, int n, Color c);
 
 #endif // MAINWINDOW_H
