@@ -31,7 +31,6 @@ private slots:
     void on_label_8_clicked();
     void on_label_9_clicked();
     void on_label_10_clicked();
-
 public slots:
     int displayLabel2();
     int displayLabel3();
@@ -42,6 +41,8 @@ public slots:
     int displayLabel8();
     int displayLabel9();
     int displayLabel10();
+    void onChoixPions2(int nbPions, int caseArrivee);
+
 
 private:
     Ui::MainWindow *ui;
@@ -72,6 +73,8 @@ private:
 
     int nbPionsLabel10;
     int pionsLabel10[5];
+
+    Color color;
 };
 
 void letsPlay(const Position2D& firstStack,  const Position2D& secondStack, int n, Color c);

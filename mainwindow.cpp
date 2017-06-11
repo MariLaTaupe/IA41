@@ -88,6 +88,8 @@ MainWindow::MainWindow(QWidget *parent) :
     pionsLabel10[4] = -1;
     displayLabel10();
 
+    color=WHITE;
+
 }
 
 MainWindow::~MainWindow()
@@ -452,8 +454,10 @@ int MainWindow::displayLabel10(){ // Case au millieu à droite
 
 void MainWindow::on_label_2_clicked() // Case en haut à gauche
 {
-    ChoixPions *c = new ChoixPions;
+    ChoixPions *c = new ChoixPions(0, 2);
     c->show();
+
+    QObject::connect(c,SIGNAL(c->retourWindow(int nbPions, int caseArrivee)),this,SLOT(onChoixPions2(int nbPions, int caseArrivee)));
     //displayLabel2();
 }
 
@@ -495,6 +499,42 @@ void MainWindow::on_label_9_clicked() // Case centrale
 void MainWindow::on_label_10_clicked() // Case au millieu à droite
 {
     displayLabel10();
+}
+
+void MainWindow::onChoixPions2(int nbPions, int caseArrivee)
+{
+    Position2D depart(1,1);
+    Position2D arrivee;
+    switch(caseArrivee){
+    case 4:
+        arrivee = Position2D(1,2);
+        break;
+    case 3:
+        arrivee = Position2D(1,3);
+        break;
+    case 8:
+        arrivee = Position2D(2,1);
+        break;
+    case 9:
+        arrivee = Position2D(2,2);
+        break;
+    case 10:
+       arrivee = Position2D(2,3);
+        break;
+    case 5:
+        arrivee = Position2D(3,1);
+        break;
+    case 6:
+        arrivee = Position2D(3,2);
+        break;
+    case 7:
+        arrivee = Position2D(3,3);
+        break;
+    default:
+        arrivee = Position2D(3,1);
+        break;
+    }
+    letsPlay(depart, arrivee, nbPions, color);
 }
 
 /** Remarques sur le plateau de jeu **/
