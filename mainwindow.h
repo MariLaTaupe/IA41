@@ -5,7 +5,6 @@
 #include <QPainter>
 #include <QPixmap>
 #include "nouvellepartie.h"
-#include "choixpions.h"
 #include "Jeu.h"
 
 
@@ -22,16 +21,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_label_2_clicked();
-    void on_label_3_clicked();
-    void on_label_4_clicked();
-    void on_label_5_clicked();
-    void on_label_6_clicked();
-    void on_label_7_clicked();
-    void on_label_8_clicked();
-    void on_label_9_clicked();
-    void on_label_10_clicked();
-
     void on_pushButton_ok_clicked();
     void on_comboBox_depart_currentIndexChanged(const QString &arg1);
     void on_comboBox_pions_currentIndexChanged(const QString &arg1);
@@ -46,8 +35,6 @@ public slots:
     int displayLabel8();
     int displayLabel9();
     int displayLabel10();
-    void onChoixPions2(int nbPions, int caseArrivee);
-
 
 private:
     Ui::MainWindow *ui;

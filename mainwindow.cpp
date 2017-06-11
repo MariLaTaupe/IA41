@@ -5,8 +5,6 @@
 #include "ui_mainwindow.h"
 #include "nouvellepartie.h"
 #include "ui_nouvellepartie.h"
-#include "choixpions.h"
-#include "ui_choixpions.h"
 
 using namespace std;
 
@@ -467,93 +465,6 @@ int MainWindow::displayLabel10(){ // Case au millieu à droite
     }
 
     return 0;
-}
-
-// TODO : envoyer au modèle
-
-void MainWindow::on_label_2_clicked() // Case en haut à gauche
-{
-    ChoixPions *c = new ChoixPions(0, 2);
-    QObject::connect(c,SIGNAL(retourWindow(int nbPions, int caseArrivee)),this,SLOT(onChoixPions2(int nbPions, int caseArrivee)));
-    c->show();
-
-    //displayLabel2();
-}
-
-void MainWindow::on_label_3_clicked() // Case en haut à droite
-{
-    displayLabel3();
-}
-
-void MainWindow::on_label_4_clicked() // Case en haut au millieu
-{
-    displayLabel4();
-}
-
-void MainWindow::on_label_5_clicked() // Case en bas à droite
-{
-    displayLabel5();
-}
-
-void MainWindow::on_label_6_clicked() // Case en bas au millieu
-{
-    displayLabel6();
-}
-
-void MainWindow::on_label_7_clicked() // Case en bas à gauche
-{
-    displayLabel7();
-}
-
-void MainWindow::on_label_8_clicked() // Case au millieu à gauche
-{
-    displayLabel8();
-}
-
-void MainWindow::on_label_9_clicked() // Case centrale
-{
-    displayLabel9();
-}
-
-void MainWindow::on_label_10_clicked() // Case au millieu à droite
-{
-    displayLabel10();
-}
-
-void MainWindow::onChoixPions2(int nbPions, int caseArrivee)
-{
-    Position2D depart(1,1);
-    Position2D arrivee;
-    switch(caseArrivee){
-    case 4:
-        arrivee = Position2D(1,2);
-        break;
-    case 3:
-        arrivee = Position2D(1,3);
-        break;
-    case 8:
-        arrivee = Position2D(2,1);
-        break;
-    case 9:
-        arrivee = Position2D(2,2);
-        break;
-    case 10:
-       arrivee = Position2D(2,3);
-        break;
-    case 5:
-        arrivee = Position2D(3,1);
-        break;
-    case 6:
-        arrivee = Position2D(3,2);
-        break;
-    case 7:
-        arrivee = Position2D(3,3);
-        break;
-    default:
-        arrivee = Position2D(3,1);
-        break;
-    }
-    letsPlay(depart, arrivee, nbPions, color);
 }
 
 void MainWindow::on_pushButton_ok_clicked()
