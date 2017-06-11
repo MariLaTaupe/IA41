@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     pionsLabel2[2] = -1;
     pionsLabel2[3] = -1;
     pionsLabel2[4] = -1;
-    displayLabel2();
+    displayLabel2(true,0);
 
     nbPionsLabel3 = 1; // Case en haut à droite
     pionsLabel3[0] = -1;
@@ -99,7 +99,14 @@ MainWindow::~MainWindow()
 
 // TODO : display en fonction du modèle
 
-int MainWindow::displayLabel2(){ // Case en haut à gauche
+int MainWindow::displayLabel2(bool sens, int nbPions){ // Case en haut à gauche
+
+    if(sens){
+        nbPionsLabel2 = nbPionsLabel2 + nbPions;
+    }else{
+        nbPionsLabel2 = nbPionsLabel2 - nbPions;
+    }
+
     int wid,hei;
     wid = ui->label_2->geometry().width();
     hei = ui->label_2->geometry().height();
@@ -455,9 +462,9 @@ int MainWindow::displayLabel10(){ // Case au millieu à droite
 void MainWindow::on_label_2_clicked() // Case en haut à gauche
 {
     ChoixPions *c = new ChoixPions(0, 2);
+    QObject::connect(c,SIGNAL(retourWindow(int nbPions, int caseArrivee)),this,SLOT(onChoixPions2(int nbPions, int caseArrivee)));
     c->show();
 
-    QObject::connect(c,SIGNAL(c->retourWindow(int nbPions, int caseArrivee)),this,SLOT(onChoixPions2(int nbPions, int caseArrivee)));
     //displayLabel2();
 }
 

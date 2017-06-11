@@ -31,8 +31,9 @@ private slots:
     void on_label_8_clicked();
     void on_label_9_clicked();
     void on_label_10_clicked();
+
 public slots:
-    int displayLabel2();
+    int displayLabel2(bool sens, int nbPions);
     int displayLabel3();
     int displayLabel4();
     int displayLabel5();
