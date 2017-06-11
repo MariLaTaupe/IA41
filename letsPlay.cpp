@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cstdio>
 
-#include "letsPLay.h"
+#include "letsPlay.h"
 
 /** Remarques sur le plateau de jeu **/
 /**
@@ -47,4 +47,5 @@ void letsPlay(const Position2D& firstStack,  const Position2D& secondStack, int 
     fprintf(stderr, "\nERREUR : Le jeu est fini mais le joueur suivant peut quand même rejouer");
 
 }
+
 
