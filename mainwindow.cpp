@@ -559,52 +559,70 @@ void MainWindow::onChoixPions2(int nbPions, int caseArrivee)
 void MainWindow::on_pushButton_ok_clicked()
 {
     bool ok;
-    int caseDepart, nbPions, caseArrivee;
+    int  nbPions;
+    Position2D caseDepart, caseArrivee;
     QString caseDepartString, caseArriveeString;
 
     nbPions = ui->comboBox_pions->currentText().toInt(&ok, 10);
 
     caseDepartString = ui->comboBox_depart->currentText();
     if(caseDepartString == "A1"){
-        caseDepart = 2;
+        caseDepart = Position2D(1,1);
     }else if(caseDepartString == "A2") {
-        caseDepart = 4;
+        caseDepart = Position2D(1,2);
     }else if(caseDepartString == "A3") {
-        caseDepart = 3;
+        caseDepart = Position2D(1,3);
     }else if(caseDepartString == "B1") {
-        caseDepart = 8;
+        caseDepart = Position2D(2,1);
     }else if(caseDepartString == "B2") {
-        caseDepart = 9;
+        caseDepart = Position2D(2,2);
     }else if(caseDepartString == "B3") {
-        caseDepart = 10;
+        caseDepart = Position2D(2,3);
     }else if(caseDepartString == "C1") {
-        caseDepart = 7;
+        caseDepart = Position2D(3,1);
     }else if(caseDepartString == "C2") {
-        caseDepart = 6;
+        caseDepart = Position2D(3,2);
     }else if(caseDepartString == "C3") {
-        caseDepart = 5;
+        caseDepart = Position2D(3,3);
     }
 
     caseArriveeString = ui->comboBox_arrivee->currentText();
     if(caseArriveeString == "A1"){
-        caseArrivee = 2;
+        caseArrivee = Position2D(1,1);
     }else if (caseArriveeString == "A2") {
-        caseArrivee = 4;
+        caseArrivee = Position2D(1,2);
     }else if (caseArriveeString == "A3") {
-        caseArrivee = 3;
+        caseArrivee = Position2D(1,3);
     }else if (caseArriveeString == "B1") {
-        caseArrivee = 8;
+        caseArrivee = Position2D(2,1);
     }else if (caseArriveeString == "B2") {
-        caseArrivee = 9;
+        caseArrivee = Position2D(2,2);
     }else if (caseArriveeString == "B3") {
-        caseArrivee = 10;
+        caseArrivee = Position2D(2,3);
     }else if (caseArriveeString == "C1") {
-        caseArrivee = 7;
+        caseArrivee = Position2D(3,1);
     }else if (caseArriveeString == "C2") {
-        caseArrivee = 6;
+        caseArrivee = Position2D(3,2);
     }else if (caseArriveeString == "C3") {
-        caseArrivee = 5;
+        caseArrivee = Position2D(3,3);
     }
+
+    if(color == WHITE){
+       if(joueur1 == 1){
+           letsPlay(caseDepart, caseArrivee, nbPions, WHITE);
+           color = BLACK;
+       }else{
+           //Rendre le layout vertical innacessible et faire jouer l'ia
+       }
+    }else{
+        if(joueur2 == 1){
+            letsPlay(caseDepart, caseArrivee, nbPions, BLACK);
+            color = WHITE;
+        }else{
+            //Rendre le layout vertical innacessible et faire jouer l'ia
+        }
+    }
+
 }
 
 void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
