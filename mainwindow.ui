@@ -299,7 +299,53 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_depart"/>
+      <widget class="QComboBox" name="comboBox_depart">
+       <item>
+        <property name="text">
+         <string>A1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>A2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>A3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>C1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>C2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>C3</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <spacer name="verticalSpacer_2">
@@ -322,7 +368,23 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_pions"/>
+      <widget class="QComboBox" name="comboBox_pions">
+       <item>
+        <property name="text">
+         <string>1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <spacer name="verticalSpacer_3">
@@ -345,7 +407,18 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox_arrivee"/>
+      <widget class="QComboBox" name="comboBox_arrivee">
+       <item>
+        <property name="text">
+         <string>A2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B1</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <spacer name="verticalSpacer_4">

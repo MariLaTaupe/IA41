@@ -88,7 +88,19 @@ MainWindow::MainWindow(QWidget *parent) :
     pionsLabel10[4] = -1;
     displayLabel10();
 
+    joueur1 = 1; // 1 = humain, 2,3,4 ... = ia
+    joueur2 = 2;
     color=WHITE;
+
+    c1 = "A1";
+    c2 = "A2";
+    c3 = "A3";
+    c4 = "B1";
+    c5 = "B2";
+    c6 = "B3";
+    c7 = "C1";
+    c8 = "C2";
+    c9 = "C3";
 
 }
 
@@ -542,6 +554,459 @@ void MainWindow::onChoixPions2(int nbPions, int caseArrivee)
         break;
     }
     letsPlay(depart, arrivee, nbPions, color);
+}
+
+void MainWindow::on_pushButton_ok_clicked()
+{
+    bool ok;
+    int caseDepart, nbPions, caseArrivee;
+    QString caseDepartString, caseArriveeString;
+
+    nbPions = ui->comboBox_pions->currentText().toInt(&ok, 10);
+
+    caseDepartString = ui->comboBox_depart->currentText();
+    if(caseDepartString == "A1"){
+        caseDepart = 2;
+    }else if(caseDepartString == "A2") {
+        caseDepart = 4;
+    }else if(caseDepartString == "A3") {
+        caseDepart = 3;
+    }else if(caseDepartString == "B1") {
+        caseDepart = 8;
+    }else if(caseDepartString == "B2") {
+        caseDepart = 9;
+    }else if(caseDepartString == "B3") {
+        caseDepart = 10;
+    }else if(caseDepartString == "C1") {
+        caseDepart = 7;
+    }else if(caseDepartString == "C2") {
+        caseDepart = 6;
+    }else if(caseDepartString == "C3") {
+        caseDepart = 5;
+    }
+
+    caseArriveeString = ui->comboBox_arrivee->currentText();
+    if(caseArriveeString == "A1"){
+        caseArrivee = 2;
+    }else if (caseArriveeString == "A2") {
+        caseArrivee = 4;
+    }else if (caseArriveeString == "A3") {
+        caseArrivee = 3;
+    }else if (caseArriveeString == "B1") {
+        caseArrivee = 8;
+    }else if (caseArriveeString == "B2") {
+        caseArrivee = 9;
+    }else if (caseArriveeString == "B3") {
+        caseArrivee = 10;
+    }else if (caseArriveeString == "C1") {
+        caseArrivee = 7;
+    }else if (caseArriveeString == "C2") {
+        caseArrivee = 6;
+    }else if (caseArriveeString == "C3") {
+        caseArrivee = 5;
+    }
+}
+
+void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
+{
+    QStringList cb;
+    bool ok1, ok2;
+
+    switch(ui->comboBox_depart->currentText().toInt(&ok1, 10)){
+    case 1:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c3 << c5 << c7;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 2:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c3 << c5;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c4 << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c7 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 3:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c6;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c5 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c4 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 4:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c5 << c7;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c3 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 5:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4 << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c3 << c7 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4 << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 6:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c3 << c5 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c7;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 7:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c4 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c5 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c6;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 8:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c5 << c7 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4 << c6;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c3;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 9:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c3 << c5 << c7;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    default:
+        break;
+    }
+}
+
+void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
+{
+    QStringList cb;
+    bool ok1, ok2;
+
+    switch(ui->comboBox_depart->currentText().toInt(&ok1, 10)){
+    case 1:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c3 << c5 << c7;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 4:
+            ui->comboBox_arrivee->clear();
+            cb << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 2:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c3 << c5;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c4 << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c7 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 3:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c6;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c5 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c4 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 4:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c5 << c7;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c3 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 5:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4 << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c3 << c7 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4 << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 6:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c3 << c5 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c7;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 7:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c4 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c5 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c6;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 8:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c5 << c7 << c9;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4 << c6;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c1 << c3;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        default:
+            break;
+        }
+        break;
+    case 9:
+        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        case 1:
+            ui->comboBox_arrivee->clear();
+            cb << c6 << c8;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 2:
+            ui->comboBox_arrivee->clear();
+            cb << c3 << c5 << c7;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+        case 3:
+            ui->comboBox_arrivee->clear();
+            cb << c2 << c4;
+            ui->comboBox_arrivee->insertItems(0,cb);
+            break;
+     }
+    default:
+        break;
+    }
 }
 
 /** Remarques sur le plateau de jeu **/

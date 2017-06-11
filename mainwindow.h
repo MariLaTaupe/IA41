@@ -32,6 +32,10 @@ private slots:
     void on_label_9_clicked();
     void on_label_10_clicked();
 
+    void on_pushButton_ok_clicked();
+    void on_comboBox_depart_currentIndexChanged(const QString &arg1);
+    void on_comboBox_pions_currentIndexChanged(const QString &arg1);
+
 public slots:
     int displayLabel2(bool sens, int nbPions);
     int displayLabel3();
@@ -47,6 +51,19 @@ public slots:
 
 private:
     Ui::MainWindow *ui;
+    int joueur1;
+    int joueur2;
+    Color color;
+
+    QString c1;
+    QString c2;
+    QString c3;
+    QString c4;
+    QString c5;
+    QString c6;
+    QString c7;
+    QString c8;
+    QString c9;
 
     int nbPionsLabel2;
     int pionsLabel2[5];
@@ -74,8 +91,6 @@ private:
 
     int nbPionsLabel10;
     int pionsLabel10[5];
-
-    Color color;
 };
 
 void letsPlay(const Position2D& firstStack,  const Position2D& secondStack, int n, Color c);
