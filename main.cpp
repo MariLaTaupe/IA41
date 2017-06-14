@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     NouvellePartie n;
     n.show();
 
-    Position2D p(2, 3);
+    /*Position2D p(2, 3);
     p.printCoordinates();
     Jeu jeu;
     jeu.printGame();
@@ -39,7 +39,8 @@ int main(int argc, char *argv[])
     Position2D p2(0, 1);
     cout << "\n" << jeu.autorizedMove(p1, p2, 2, WHITE);
 
-    letsPlay(p1, p2, 3, WHITE);
+    letsPlay(p1, p2, 3, WHITE);*/ //letsPlay() est devenue fonction de MainWindow
+
     return a.exec();
     
 }

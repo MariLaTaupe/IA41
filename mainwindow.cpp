@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    jeu = new Jeu();
+
     nbPionsLabel2 = 1; // Case en haut à gauche
     pionsLabel2[0] = -1;
     pionsLabel2[1] = -1;
@@ -108,7 +110,12 @@ MainWindow::~MainWindow()
 }
 
 // TODO : display en fonction du modèle
+/*
+void MainWindow::displayLabel(){
 
+}
+*/
+/*
 int MainWindow::displayLabel2(bool sens, int nbPions){ // Case en haut à gauche
 
     if(sens){
@@ -466,6 +473,7 @@ int MainWindow::displayLabel10(){ // Case au millieu à droite
 
     return 0;
 }
+*/
 
 void MainWindow::on_pushButton_ok_clicked()
 {
@@ -946,22 +954,21 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
  * Pour la case (2, 3), on prendra donc la case 3*2+2 soit la case 8.
  */
 
-void letsPlay(const Position2D& firstStack,  const Position2D& secondStack, int n, Color c)
+void MainWindow::letsPlay(const Position2D& firstStack,  const Position2D& secondStack, int n, Color c)
 {
-    Jeu jeu;
     /**int n; //nombre de pions à bouger
     Position2D firstStack;  //Position de la pile de depart (X et Y)
     Position2D secondStack; //Position de la pile d'arrivee (X et Y)**/
 
-    vector<stack<Pion> >* board = jeu.getBoard();   //Recuperation du plateau de jeu
-    if(!jeu.isItEnd())
+    vector<stack<Pion> >* board = jeu->getBoard();   //Recuperation du plateau de jeu
+    if(!jeu->isItEnd())
     {
         /* Action joueur */
-        if(jeu.autorizedMove(firstStack, secondStack, n, c))
+        if(jeu->autorizedMove(firstStack, secondStack, n, c))
         {
-            jeu.moveStack(board[0][3*firstStack.getY()+firstStack.getX()], board[0][3*secondStack.getY()+secondStack.getX()], n);
+            jeu->moveStack(board[0][3*firstStack.getY()+firstStack.getX()], board[0][3*secondStack.getY()+secondStack.getX()], n);
         }
-        if(jeu.isItEnd())
+        if(jeu->isItEnd())
         {
             if(c==WHITE)
             {

@@ -26,6 +26,8 @@ private slots:
     void on_comboBox_pions_currentIndexChanged(const QString &arg1);
 
 public slots:
+    int displayLabel();
+    /*
     int displayLabel2(bool sens, int nbPions);
     int displayLabel3();
     int displayLabel4();
@@ -35,9 +37,12 @@ public slots:
     int displayLabel8();
     int displayLabel9();
     int displayLabel10();
+    */
+    void letsPlay(const Position2D &firstStack, const Position2D &secondStack, int n, Color c);
 
 private:
     Ui::MainWindow *ui;
+    Jeu* jeu;
     int joueur1;
     int joueur2;
     Color color;
