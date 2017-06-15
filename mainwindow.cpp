@@ -71,8 +71,6 @@ MainWindow::MainWindow(QWidget *parent) :
     pionsLabel10[3] = -1;
     pionsLabel10[4] = -1;
 
-    changeBoard(6,5,1);
-
     displayLabel();
 
     joueur1 = 1; // 1 = humain, 2,3,4 ... = ia
@@ -427,22 +425,24 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
 {
     QStringList cb;
     bool ok;
-    cout << ui->comboBox_depart->currentIndex() << endl;
 
-    switch(ui->comboBox_depart->currentIndex()){
+    switch(ui->comboBox_depart->currentIndex()+1){
     case 1:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c3 << c5 << c7;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c6 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -454,16 +454,19 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
     case 2:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c3 << c5;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c4 << c6 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c7 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -475,16 +478,19 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
     case 3:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c6;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c5 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c4 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -496,16 +502,19 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
     case 4:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c5 << c7;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c6 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c3 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -517,16 +526,19 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
     case 5:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4 << c6 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c3 << c7 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4 << c6 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -538,16 +550,19 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
     case 6:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c3 << c5 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c7;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -559,16 +574,19 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
     case 7:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c4 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c5 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c6;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -580,16 +598,19 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
     case 8:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c5 << c7 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4 << c6;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c3;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -601,16 +622,19 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
     case 9:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c6 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c3 << c5 << c7;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -628,29 +652,26 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
 {
     QStringList cb;
     bool ok;
-    cout << ui->comboBox_depart->currentIndex() << endl;
 
-    switch(ui->comboBox_depart->currentIndex()){
+    switch(ui->comboBox_depart->currentIndex()+1){
     case 1:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c3 << c5 << c7;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c6 << c8;
-            ui->comboBox_arrivee->insertItems(0,cb);
-            break;
-        case 4:
-            ui->comboBox_arrivee->clear();
-            cb << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         default:
@@ -660,16 +681,19 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
     case 2:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c3 << c5;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c4 << c6 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c7 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -681,16 +705,19 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
     case 3:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c6;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c5 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c4 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -702,16 +729,19 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
     case 4:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c5 << c7;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c6 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c3 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -723,16 +753,19 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
     case 5:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4 << c6 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c3 << c7 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4 << c6 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -744,16 +777,19 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
     case 6:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c3 << c5 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c7;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -765,16 +801,19 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
     case 7:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c4 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c5 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c6;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -786,16 +825,19 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
     case 8:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c5 << c7 << c9;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4 << c6;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c1 << c3;
             ui->comboBox_arrivee->insertItems(0,cb);
@@ -807,21 +849,27 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
     case 9:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c6 << c8;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 2:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c3 << c5 << c7;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
         case 3:
+            cb.clear();
             ui->comboBox_arrivee->clear();
             cb << c2 << c4;
             ui->comboBox_arrivee->insertItems(0,cb);
             break;
-     }
+        default:
+            break;
+        }
+        break;
     default:
         break;
     }
