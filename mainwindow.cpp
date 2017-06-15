@@ -5,6 +5,8 @@
 #include "nouvellepartie.h"
 #include "ui_nouvellepartie.h"
 
+// TODO : c'autoconnect bug pour on_trux_indexchanged
+
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -15,59 +17,61 @@ MainWindow::MainWindow(QWidget *parent) :
 
     jeu = new Jeu();
 
-    pionsLabel2[0] = 1; // Case en haut à gauche
+    pionsLabel2[0] = 1; // Case en haut à gauche, A1 pour l'utilisateur, (1,1) pour l'ia
     pionsLabel2[1] = -1; // -1 : pas de pions
     pionsLabel2[2] = -1; // 1 : WHITE
     pionsLabel2[3] = -1; // 2 : BLACK
     pionsLabel2[4] = -1;
 
-    pionsLabel3[0] = 1; // Case en haut à droite
+    pionsLabel3[0] = 1; // Case en haut à droite, A3 pour l'utilisateur, (1,3) pour l'ia
     pionsLabel3[1] = -1;
     pionsLabel3[2] = -1;
     pionsLabel3[3] = -1;
     pionsLabel3[4] = -1;
 
-    pionsLabel4[0] = 1; // Case en haut au millieu
+    pionsLabel4[0] = 1; // Case en haut au millieu, A2 pour l'utilisateur, (1,2) pour l'ia
     pionsLabel4[1] = -1;
     pionsLabel4[2] = -1;
     pionsLabel4[3] = -1;
     pionsLabel4[4] = -1;
 
-    pionsLabel5[0] = 2; // Case en bas à droite
+    pionsLabel5[0] = 2; // Case en bas à droite, C3 pour l'utilisateur, (3,3) pour l'ia
     pionsLabel5[1] = -1;
     pionsLabel5[2] = -1;
     pionsLabel5[3] = -1;
     pionsLabel5[4] = -1;
 
-    pionsLabel6[0] = 2; // Case en bas au millieu
+    pionsLabel6[0] = 2; // Case en bas au millieu, C2 pour l'utilisateur, (3,2) pour l'ia
     pionsLabel6[1] = -1;
     pionsLabel6[2] = -1;
     pionsLabel6[3] = -1;
     pionsLabel6[4] = -1;
 
-    pionsLabel7[0] = 2; // Case en bas à gauche
+    pionsLabel7[0] = 2; // Case en bas à gauche, C1 pour l'utilisateur, (3,1) pour l'ia
     pionsLabel7[1] = -1;
     pionsLabel7[2] = -1;
     pionsLabel7[3] = -1;
     pionsLabel7[4] = -1;
 
-    pionsLabel8[0] = -1; // Case au millieu à gauche
+    pionsLabel8[0] = -1; // Case au millieu à gauche, B1 pour l'utilisateur, (2,1) pour l'ia
     pionsLabel8[1] = -1;
     pionsLabel8[2] = -1;
     pionsLabel8[3] = -1;
     pionsLabel8[4] = -1;
 
-    pionsLabel9[0] = -1; // Case centrale
+    pionsLabel9[0] = -1; // Case centrale, B2 pour l'utilisateur, (2,2) pour l'ia
     pionsLabel9[1] = -1;
     pionsLabel9[2] = -1;
     pionsLabel9[3] = -1;
     pionsLabel9[4] = -1;
 
-    pionsLabel10[0] = -1; // Case au millieu à droite
+    pionsLabel10[0] = -1; // Case au millieu à droite, B3 pour l'utilisateur, (2,3) pour l'ia
     pionsLabel10[1] = -1;
     pionsLabel10[2] = -1;
     pionsLabel10[3] = -1;
     pionsLabel10[4] = -1;
+
+    changeBoard(6,5,1);
 
     displayLabel();
 
@@ -95,7 +99,6 @@ MainWindow::~MainWindow()
 // TODO : display en fonction du modèle
 
 void MainWindow::displayLabel(){
-
     int wid,hei;
     wid = ui->label_2->geometry().width();
     hei = ui->label_2->geometry().height();
@@ -234,10 +237,106 @@ void MainWindow::displayLabel(){
 
 }
 
+void MainWindow::changeBoard(int labelDepart, int labelArrivee, int nbPions){
+    switch(labelDepart){
+    case 2:
+        changeBoard(pionsLabel2, labelArrivee, nbPions);
+        break;
+    case 3:
+        changeBoard(pionsLabel3, labelArrivee, nbPions);
+        break;
+    case 4:
+        changeBoard(pionsLabel4, labelArrivee, nbPions);
+        break;
+    case 5:
+        changeBoard(pionsLabel5, labelArrivee, nbPions);
+        break;
+    case 6:
+        changeBoard(pionsLabel6, labelArrivee, nbPions);
+        break;
+    case 7:
+        changeBoard(pionsLabel7, labelArrivee, nbPions);
+        break;
+    case 8:
+        changeBoard(pionsLabel8, labelArrivee, nbPions);
+        break;
+    case 9:
+        changeBoard(pionsLabel9, labelArrivee, nbPions);
+        break;
+    case 10:
+        changeBoard(pionsLabel10, labelArrivee, nbPions);
+        break;
+    default :
+        break;
+    }
+
+}
+
+void MainWindow::changeBoard(int depart[5], int labelArrivee, int nbPions){
+    switch(labelArrivee){
+    case 2:
+        changeBoard(depart, pionsLabel2, nbPions);
+        break;
+    case 3:
+        changeBoard(depart, pionsLabel3, nbPions);
+        break;
+    case 4:
+        changeBoard(depart, pionsLabel4, nbPions);
+        break;
+    case 5:
+        changeBoard(depart, pionsLabel5, nbPions);
+        break;
+    case 6:
+        changeBoard(depart, pionsLabel6, nbPions);
+        break;
+    case 7:
+        changeBoard(depart, pionsLabel7, nbPions);
+        break;
+    case 8:
+        changeBoard(depart, pionsLabel8, nbPions);
+        break;
+    case 9:
+        changeBoard(depart, pionsLabel9, nbPions);
+        break;
+    case 10:
+        changeBoard(depart, pionsLabel10, nbPions);
+        break;
+    default :
+        break;
+    }
+}
+
+void MainWindow::changeBoard(int depart[5], int arrivee[5], int nbPions){
+    int tmp[nbPions], i=4, j=nbPions;
+
+    for (i=4; i>-1; i--){
+        if(depart[i] != -1){
+            if(j != 0){
+                tmp[nbPions - j] = depart[i];
+                depart[i] = -1;
+                j--;
+            }
+
+        }
+    }
+
+    i=0;
+    j=0;
+
+    for (i=0; i<5; i++){
+        if(arrivee[i] == -1){
+            if(j != nbPions){
+                arrivee[i] = tmp[j];
+                j++;
+            }
+        }
+    }
+}
+
 void MainWindow::on_pushButton_ok_clicked()
 {
     bool ok;
-    int  nbPions;
+    int  nbPions, labelDepart, labelArrivee;
     Position2D caseDepart, caseArrivee;
     QString caseDepartString, caseArriveeString;
 
@@ -246,43 +345,61 @@ void MainWindow::on_pushButton_ok_clicked()
     caseDepartString = ui->comboBox_depart->currentText();
     if(caseDepartString == "A1"){
         caseDepart = Position2D(1,1);
+        labelDepart = 2;
     }else if(caseDepartString == "A2") {
         caseDepart = Position2D(1,2);
+        labelDepart = 4;
     }else if(caseDepartString == "A3") {
         caseDepart = Position2D(1,3);
+        labelDepart = 3;
     }else if(caseDepartString == "B1") {
         caseDepart = Position2D(2,1);
+        labelDepart = 8;
     }else if(caseDepartString == "B2") {
         caseDepart = Position2D(2,2);
+        labelDepart = 9;
     }else if(caseDepartString == "B3") {
         caseDepart = Position2D(2,3);
+        labelDepart = 10;
     }else if(caseDepartString == "C1") {
         caseDepart = Position2D(3,1);
+        labelDepart = 7;
     }else if(caseDepartString == "C2") {
         caseDepart = Position2D(3,2);
+        labelDepart = 6;
     }else if(caseDepartString == "C3") {
         caseDepart = Position2D(3,3);
+        labelDepart = 5;
     }
 
     caseArriveeString = ui->comboBox_arrivee->currentText();
     if(caseArriveeString == "A1"){
         caseArrivee = Position2D(1,1);
+        labelArrivee = 2;
     }else if (caseArriveeString == "A2") {
         caseArrivee = Position2D(1,2);
+        labelArrivee = 4;
     }else if (caseArriveeString == "A3") {
         caseArrivee = Position2D(1,3);
+        labelArrivee = 3;
     }else if (caseArriveeString == "B1") {
         caseArrivee = Position2D(2,1);
+        labelArrivee = 8;
     }else if (caseArriveeString == "B2") {
         caseArrivee = Position2D(2,2);
+        labelArrivee = 9;
     }else if (caseArriveeString == "B3") {
         caseArrivee = Position2D(2,3);
+        labelArrivee = 10;
     }else if (caseArriveeString == "C1") {
         caseArrivee = Position2D(3,1);
+        labelArrivee = 7;
     }else if (caseArriveeString == "C2") {
         caseArrivee = Position2D(3,2);
+        labelArrivee = 6;
     }else if (caseArriveeString == "C3") {
         caseArrivee = Position2D(3,3);
+        labelArrivee = 5;
     }
 
     if(color == WHITE){
@@ -301,16 +418,20 @@ void MainWindow::on_pushButton_ok_clicked()
         }
     }
 
+    changeBoard(labelDepart, labelArrivee, nbPions);
+    displayLabel();
+
 }
 
 void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
 {
     QStringList cb;
-    bool ok1, ok2;
+    bool ok;
+    cout << ui->comboBox_depart->currentIndex() << endl;
 
-    switch(ui->comboBox_depart->currentText().toInt(&ok1, 10)){
+    switch(ui->comboBox_depart->currentIndex()){
     case 1:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c2 << c4;
@@ -331,7 +452,7 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
         }
         break;
     case 2:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c1 << c3 << c5;
@@ -352,7 +473,7 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
         }
         break;
     case 3:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c2 << c6;
@@ -373,7 +494,7 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
         }
         break;
     case 4:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c1 << c5 << c7;
@@ -394,7 +515,7 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
         }
         break;
     case 5:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c2 << c4 << c6 << c8;
@@ -415,7 +536,7 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
         }
         break;
     case 6:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c3 << c5 << c9;
@@ -436,7 +557,7 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
         }
         break;
     case 7:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c4 << c8;
@@ -457,7 +578,7 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
         }
         break;
     case 8:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c5 << c7 << c9;
@@ -478,7 +599,7 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
         }
         break;
     case 9:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c6 << c8;
@@ -506,11 +627,12 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
 void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
 {
     QStringList cb;
-    bool ok1, ok2;
+    bool ok;
+    cout << ui->comboBox_depart->currentIndex() << endl;
 
-    switch(ui->comboBox_depart->currentText().toInt(&ok1, 10)){
+    switch(ui->comboBox_depart->currentIndex()){
     case 1:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c2 << c4;
@@ -536,7 +658,7 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
         }
         break;
     case 2:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c1 << c3 << c5;
@@ -557,7 +679,7 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
         }
         break;
     case 3:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c2 << c6;
@@ -578,7 +700,7 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
         }
         break;
     case 4:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c1 << c5 << c7;
@@ -599,7 +721,7 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
         }
         break;
     case 5:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c2 << c4 << c6 << c8;
@@ -620,7 +742,7 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
         }
         break;
     case 6:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c3 << c5 << c9;
@@ -641,7 +763,7 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
         }
         break;
     case 7:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c4 << c8;
@@ -662,7 +784,7 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
         }
         break;
     case 8:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c5 << c7 << c9;
@@ -683,7 +805,7 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
         }
         break;
     case 9:
-        switch (ui->comboBox_pions->currentText().toInt(&ok2, 10)) {
+        switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
             ui->comboBox_arrivee->clear();
             cb << c6 << c8;
@@ -713,8 +835,7 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
  * Pour la case (2, 3), on prendra donc la case 3*2+2 soit la case 8.
  */
 
-void MainWindow::letsPlay(const Position2D& firstStack,  const Position2D& secondStack, int n, Color c)
-{
+void MainWindow::letsPlay(const Position2D& firstStack,  const Position2D& secondStack, int n, Color c){
     /**int n; //nombre de pions à bouger
     Position2D firstStack;  //Position de la pile de depart (X et Y)
     Position2D secondStack; //Position de la pile d'arrivee (X et Y)**/

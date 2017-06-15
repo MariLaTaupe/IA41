@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QPainter>
 #include <QPixmap>
+#include <QLabel>
+
 #include "nouvellepartie.h"
 #include "Jeu.h"
 
@@ -28,6 +30,9 @@ private slots:
 public slots:
     void displayLabel();
     void letsPlay(const Position2D &firstStack, const Position2D &secondStack, int n, Color c);
+    void changeBoard(int labelDepart, int labelArrivee, int nbPions);
+    void changeBoard(int depart[5], int labelArrivee, int nbPions);
+    void changeBoard(int depart[5], int arrivee[5], int nbPions);
 
 private:
     Ui::MainWindow *ui;
