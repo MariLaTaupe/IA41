@@ -27,7 +27,6 @@ Jeu::Jeu()
             s.push(Pion(BLACK, Position2D(i%3, 3)));
             s.push(Pion(BLACK, Position2D(i%3, 3)));
         }
-
         _board.push_back(s);
     }
 
@@ -39,9 +38,8 @@ Jeu::Jeu()
  */
 Jeu::Jeu(Jeu& j)
 {
-vector<stack<Pion> >* board = j.getBoard();
-this->_board=board[0];
-delete(board);
+    vector<stack<Pion> >* board = j.getBoard();
+    this->_board=board[0];
 }
 
 /**
@@ -53,7 +51,6 @@ Jeu& Jeu::operator=(Jeu& j)
 {
     vector<stack<Pion> >* board = j.getBoard();
     this->_board=j.getBoard()[0];
-    delete(board);
     return *this;
 }
 
@@ -103,7 +100,6 @@ bool Jeu::moveStack(stack<Pion> &stack1, stack<Pion> &stack2, int n)
     {
         return false;
     }
-
 }
 
 /**
@@ -130,24 +126,6 @@ bool Jeu::autorizedMove(const Position2D &stack1, const Position2D &stack2, int 
     }
     return false;
 }
-/**bool Jeu::autorizedMove(stack<Pion> &stack1, stack<Pion> &stack2, int n, Color playerColor) {
-    //Si la valeur de n est correcte
-    // (comprise entre 1 et 3, et inferieure ou egale au nombre de pions de la pile a debiter)
-    if(n>=1 && n<=3 && stack1.size()>=n)
-    {
-        //Si le pion superieur est de la couleur du joueur (couleur passee en parametre)
-        if(stack1.top().getColor()==playerColor)
-        {
-            //Si la distance entre les pions au carre vaut n, le mouvement est bon.
-            if( fabs((stack1.top().getPosition().getX()-stack2.top().getPosition().getX()) +
-                     (stack1.top().getPosition().getY()-stack2.top().getPosition().getY()))==n)
-            {
-                return true;
-            }
-        }
-    }
-    return false;
-}*/
 
 /**
  * Verifie si le jeu est termine ou non, et su oui, affiche le joueur gagnant
@@ -193,14 +171,14 @@ bool Jeu::isItEnd()
     {
         //Sinon, toute les colonnes ont un pion superieur de la meme couleur, le jeu est termine,
         //et color contient la couleur du gagnant (Blanc : joueur 1, Noir : joueur 2)
-        if(c==WHITE)
+        /**if(c==WHITE)
         {
             cout << "\nLe joueur 1 a gagne";
         }
         else
         {
             cout << "\nLe joueur 2 a gagne";
-        }
+        }*/
         return true;
     }
 }

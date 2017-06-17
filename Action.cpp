@@ -4,7 +4,7 @@
 
 #include "Action.h"
 
-Action::Action(stack<Pion> p1, stack<Pion> p2, int n, Color c)
+Action::Action(Position2D p1, Position2D p2, int n, Color c)
 {
     this->_firstStack=p1;
     this->_secondStack=p2;
@@ -19,11 +19,11 @@ Action &Action::operator=(const Action &a) {
     return *this;
 }
 
-stack<Pion> &Action::getFirstStack() {
+Position2D &Action::getFirstStack() {
     return this->_firstStack;
 }
 
-stack<Pion> &Action::getSecondStack() {
+Position2D &Action::getSecondStack() {
     return this->_secondStack;
 }
 

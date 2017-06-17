@@ -19,6 +19,16 @@ int Position2D::getY() const
     return _y;
 }
 
+void Position2D::setX(int new_x)
+{
+    this->_x=new_x;
+}
+
+void Position2D::setY(int new_y)
+{
+    this->_y=new_y;
+}
+
 void Position2D::printCoordinates() const
 {
     std::cout << '(' << this->getX() << ';' << this->getY() << ')';

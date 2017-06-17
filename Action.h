@@ -10,18 +10,18 @@ using namespace std;
 
 class Action {
 private:
-    stack<Pion> _firstStack;
-    stack<Pion> _secondStack;
+    Position2D _firstStack;
+    Position2D _secondStack;
     int _n;
     Color _player;
 
 public:
-    Action(stack<Pion> p1, stack<Pion> p2, int n, Color c);
+    Action(Position2D p1, Position2D p2, int n, Color c);
     Action(const Action& a);
     ~Action(){};
     Action& operator=(const Action& a);
-    stack<Pion>& getFirstStack();
-    stack<Pion>& getSecondStack();
+    Position2D& getFirstStack();
+    Position2D& getSecondStack();
     int getN();
     void setN(int new_n);
     Color getPlayer();
