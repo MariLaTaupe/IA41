@@ -14,5 +14,7 @@ public :
 	Position2D& operator=(const Position2D& p);
 	int getX() const;
 	int getY() const;
+	void setX(int new_x);
+	void setY(int new_y);
 	void printCoordinates() const;
 };
