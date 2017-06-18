@@ -24,7 +24,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    nouvellepartie.cpp \
     mainwindow.cpp \
     main.cpp \
     Jeu.cpp \
@@ -34,7 +33,6 @@ SOURCES += \
     IA.cpp
 
 HEADERS += \
-    nouvellepartie.h \
     mainwindow.h \
     Jeu.h \
     Pion.h \
@@ -45,5 +43,4 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui \
-    mainwindow.ui \
-    nouvellepartie.ui
+    mainwindow.ui

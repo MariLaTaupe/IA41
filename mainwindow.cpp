@@ -1,4 +1,5 @@
 #include <iostream>
+#include <QInputDialog>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -14,7 +15,23 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //jeu = new Jeu();
+    joueur1 = 1; // 1 = humain, 2,3,4 ... = ia
+    color=WHITE;
+
+    QStringList items;
+    items << "Humain" << "IA faible" << "IA moyenne" << "IA forte";
+    bool ok;
+    QString item = QInputDialog::getItem(this, "Veuillez choisir votre deuxième joueur","Humain", items, 0, false, &ok);
+
+    if(item == "Humain"){
+        joueur2 = 1;
+    }else if(item == "IA faible"){
+        joueur2 = 2;
+    }else if(item == "IA moyenne"){
+        joueur2 = 3;
+    }else if(item == "IA forte"){
+        joueur2 = 4;
+    }
 
     pionsLabel2[0] = 1; // Case en haut à gauche, A1 pour l'utilisateur, (0,0) pour l'ia
     pionsLabel2[1] = -1; // -1 : pas de pions
@@ -71,10 +88,6 @@ MainWindow::MainWindow(QWidget *parent) :
     pionsLabel10[4] = -1;
 
     displayLabel();
-
-    joueur1 = 1; // 1 = humain, 2,3,4 ... = ia
-    joueur2 = 2;
-    color=WHITE;
 
     c1 = "A1";
     c2 = "A2";
@@ -918,9 +931,9 @@ void MainWindow::iaPlay(){
     int  nbPions, labelDepart, labelArrivee;
     Position2D caseDepart, caseArrivee;
 
-    caseDepart = MinMax(jeu, BLACK, 2).getFirstStack(); // On récupére les choix de l'ia
-    caseArrivee = MinMax(jeu, BLACK, 2).getSecondStack();
-    nbPions = MinMax(jeu, BLACK, 2).getN();
+    caseDepart = MinMax(jeu, BLACK, joueur2).getFirstStack(); // On récupére les choix de l'ia
+    caseArrivee = MinMax(jeu, BLACK, joueur2).getSecondStack();
+    nbPions = MinMax(jeu, BLACK, joueur2).getN();
 
     switch(caseDepart.getX()){
     case 0:
