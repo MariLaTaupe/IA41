@@ -1,9 +1,21 @@
+/*
+ *  Created by P. Daudre-Treuil and A.S Berre on 06/2017
+ */
+
 #include<iostream>
 
+/*
+ * Classe destinee a stocker une position sur une carte en 2D. Ses composantes sont entieres
+ * L'implementation des fonctions est disponible dans le fichier "Position2D.cpp"
+ */
 class Position2D
 {
 private :
+
+    /*Abscisse entiere de la position*/
 	int _x;
+
+    /*Ordonnee entiere de la position*/
 	int _y;
 
 public :

@@ -1,9 +1,22 @@
-//
-// Created by Anne-Sophie on 11/06/2017.
-//
+/*
+ *  Created by P. Daudre-Treuil and A.S Berre on 06/2017
+ */
 
 #include "Action.h"
 
+/**
+ * Fonctions associees a une action sur le jeu Pogo. Les entetes des fonctions sont disponibles dans le fichier
+ * "Action.h"
+ */
+
+
+/**
+ * Constructeur avec parametres.
+ * @param p1 : coordonnees de la pile de depart
+ * @param p2 : coordonnees de la pile d'arrivee
+ * @param n : nombre de pions a deplacer
+ * @param c : couleur du joueur qui effectue le mouvement
+ */
 Action::Action(Position2D p1, Position2D p2, int n, Color c)
 {
     this->_firstStack=p1;
@@ -12,34 +25,70 @@ Action::Action(Position2D p1, Position2D p2, int n, Color c)
     this->_player=c;
 }
 
-Action::Action(const Action& a)
-{}
+/**
+ * Constructeur de recopie
+ */
+Action::Action(Action& a)
+{
+    this->_firstStack=a.getFirstStack();
+    this->_secondStack=a.getSecondStack();
+    this->_n=a.getN();
+    this->_player=a.getPlayer();
 
-Action &Action::operator=(const Action &a) {
+}
+
+/**
+ * Operateur d'affection.
+ */
+Action &Action::operator=(const Action &a)
+{
     return *this;
 }
 
-Position2D &Action::getFirstStack() {
+/**
+ * @return : la pile de depart
+ */
+Position2D &Action::getFirstStack()
+{
     return this->_firstStack;
 }
 
-Position2D &Action::getSecondStack() {
+/**
+ * @return : la pile d'arrivee
+ */
+Position2D &Action::getSecondStack()
+{
     return this->_secondStack;
 }
 
+/**
+ * @return : le nombre de pion deplaces lors du coup
+ */
 int Action::getN() {
     return this->_n;
 }
 
-void Action::setN(int new_n) {
+/**
+ * @param new_n : nouvelle valeur a affecter au nombre de pions deplaces
+ */
+void Action::setN(int new_n)
+{
     this->_n=new_n;
 }
 
-Color Action::getPlayer() {
+/**
+ * @return : la couleur du joueur qui effectue le mouvement
+ */
+Color Action::getPlayer()
+{
     return this->_player;
 }
 
-void Action::SetPlayer(Color new_color) {
+/**
+ * @param new_color : nouvelle couleur du joueur
+ */
+void Action::SetPlayer(Color new_color)
+{
     this->_player=new_color;
 }
 

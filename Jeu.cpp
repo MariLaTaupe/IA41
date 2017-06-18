@@ -4,9 +4,11 @@
 
 #include<iostream>
 #include<math.h>
-
 #include"Jeu.h"
 
+/**
+ * Fonctions associees au jeu Pogo (plateau, piles de pion et regles). Les entetes des fonctions sont disponibles dans le fichier "Jeu.h"
+ */
 
 /**
  * Constructeur par défaut.
@@ -48,8 +50,6 @@ Jeu::Jeu(Jeu& j)
 
 /**
  * Operateur d'affection pour les objets "Jeu".
- * @param j : Objet à affecter.
- * @return  L'objet qui a re_u l'affectation.
  */
 Jeu& Jeu::operator=(Jeu& j)
 {

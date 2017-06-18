@@ -4,6 +4,9 @@
 
 #include "IA.h"
 
+/**
+ * Fonctions associees a l'IA du jeu Pogo. Les entetes des fonctions sont disponibles dans le fichier "IA.h"
+ */
 
 /**
  * Fonction destinee a une evaluation du jeu lors d'un minmax avec profondeur donnee.
