@@ -883,7 +883,7 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
  * Pour la case (2, 3), on prendra donc la case 3*2+2 soit la case 8.
  */
 
-void MainWindow::letsPlay(const Position2D& firstStack,  const Position2D& secondStack, int n, Color c){
+bool MainWindow::letsPlay(const Position2D& firstStack,  const Position2D& secondStack, int n, Color c){
     /**int n; //nombre de pions à bouger
     Position2D firstStack;  //Position de la pile de depart (X et Y)
     Position2D secondStack; //Position de la pile d'arrivee (X et Y)**/
@@ -895,8 +895,13 @@ void MainWindow::letsPlay(const Position2D& firstStack,  const Position2D& secon
         if(jeu.autorizedMove(firstStack, secondStack, n, c))
         {
             jeu.moveStack(board[0][3*firstStack.getY()+firstStack.getX()], board[0][3*secondStack.getY()+secondStack.getX()], n);
+            return true;
         }
-        if(jeu.isItEnd())
+        else
+        {
+            return false;
+        }
+        /**if(jeu.isItEnd())
         {
             if(c==WHITE)
             {
@@ -907,10 +912,11 @@ void MainWindow::letsPlay(const Position2D& firstStack,  const Position2D& secon
                 //Le joueur 2 a gagne
             }
             //Affichage resultats
-        }
+        }*/
     }
     else
     fprintf(stderr, "\nERREUR : Le jeu est fini mais le joueur suivant peut quand même rejouer");
+    return false;
 
 }
 
