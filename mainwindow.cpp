@@ -5,67 +5,66 @@
 #include "nouvellepartie.h"
 #include "ui_nouvellepartie.h"
 
-// TODO : mettre des sécurité partout !
 
 using namespace std;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow) // TODO : initialiser à partir du modèle
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    jeu = new Jeu();
+    //jeu = new Jeu();
 
-    pionsLabel2[0] = 1; // Case en haut à gauche, A1 pour l'utilisateur, (1,1) pour l'ia
+    pionsLabel2[0] = 1; // Case en haut à gauche, A1 pour l'utilisateur, (0,0) pour l'ia
     pionsLabel2[1] = -1; // -1 : pas de pions
     pionsLabel2[2] = -1; // 1 : WHITE
     pionsLabel2[3] = -1; // 2 : BLACK
     pionsLabel2[4] = -1;
 
-    pionsLabel3[0] = 1; // Case en haut à droite, A3 pour l'utilisateur, (1,3) pour l'ia
+    pionsLabel3[0] = 1; // Case en haut à droite, A3 pour l'utilisateur, (0,2) pour l'ia
     pionsLabel3[1] = -1;
     pionsLabel3[2] = -1;
     pionsLabel3[3] = -1;
     pionsLabel3[4] = -1;
 
-    pionsLabel4[0] = 1; // Case en haut au millieu, A2 pour l'utilisateur, (1,2) pour l'ia
+    pionsLabel4[0] = 1; // Case en haut au millieu, A2 pour l'utilisateur, (0,1) pour l'ia
     pionsLabel4[1] = -1;
     pionsLabel4[2] = -1;
     pionsLabel4[3] = -1;
     pionsLabel4[4] = -1;
 
-    pionsLabel5[0] = 2; // Case en bas à droite, C3 pour l'utilisateur, (3,3) pour l'ia
+    pionsLabel5[0] = 2; // Case en bas à droite, C3 pour l'utilisateur, (2,2) pour l'ia
     pionsLabel5[1] = -1;
     pionsLabel5[2] = -1;
     pionsLabel5[3] = -1;
     pionsLabel5[4] = -1;
 
-    pionsLabel6[0] = 2; // Case en bas au millieu, C2 pour l'utilisateur, (3,2) pour l'ia
+    pionsLabel6[0] = 2; // Case en bas au millieu, C2 pour l'utilisateur, (2,1) pour l'ia
     pionsLabel6[1] = -1;
     pionsLabel6[2] = -1;
     pionsLabel6[3] = -1;
     pionsLabel6[4] = -1;
 
-    pionsLabel7[0] = 2; // Case en bas à gauche, C1 pour l'utilisateur, (3,1) pour l'ia
+    pionsLabel7[0] = 2; // Case en bas à gauche, C1 pour l'utilisateur, (2,0) pour l'ia
     pionsLabel7[1] = -1;
     pionsLabel7[2] = -1;
     pionsLabel7[3] = -1;
     pionsLabel7[4] = -1;
 
-    pionsLabel8[0] = -1; // Case au millieu à gauche, B1 pour l'utilisateur, (2,1) pour l'ia
+    pionsLabel8[0] = -1; // Case au millieu à gauche, B1 pour l'utilisateur, (1,0) pour l'ia
     pionsLabel8[1] = -1;
     pionsLabel8[2] = -1;
     pionsLabel8[3] = -1;
     pionsLabel8[4] = -1;
 
-    pionsLabel9[0] = -1; // Case centrale, B2 pour l'utilisateur, (2,2) pour l'ia
+    pionsLabel9[0] = -1; // Case centrale, B2 pour l'utilisateur, (1,1) pour l'ia
     pionsLabel9[1] = -1;
     pionsLabel9[2] = -1;
     pionsLabel9[3] = -1;
     pionsLabel9[4] = -1;
 
-    pionsLabel10[0] = -1; // Case au millieu à droite, B3 pour l'utilisateur, (2,3) pour l'ia
+    pionsLabel10[0] = -1; // Case au millieu à droite, B3 pour l'utilisateur, (1,2) pour l'ia
     pionsLabel10[1] = -1;
     pionsLabel10[2] = -1;
     pionsLabel10[3] = -1;
@@ -86,15 +85,12 @@ MainWindow::MainWindow(QWidget *parent) :
     c7 = "C1";
     c8 = "C2";
     c9 = "C3";
-
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-// TODO : display en fonction du modèle
 
 void MainWindow::displayLabel(){
     int wid,hei;
@@ -342,61 +338,61 @@ void MainWindow::on_pushButton_ok_clicked()
 
     caseDepartString = ui->comboBox_depart->currentText(); // on selectionne la case de départ
     if(caseDepartString == "A1"){
-        caseDepart = Position2D(1,1);
+        caseDepart = Position2D(0,0);
         labelDepart = 2;
     }else if(caseDepartString == "A2") {
-        caseDepart = Position2D(1,2);
+        caseDepart = Position2D(0,1);
         labelDepart = 4;
     }else if(caseDepartString == "A3") {
-        caseDepart = Position2D(1,3);
+        caseDepart = Position2D(0,2);
         labelDepart = 3;
     }else if(caseDepartString == "B1") {
-        caseDepart = Position2D(2,1);
+        caseDepart = Position2D(1,0);
         labelDepart = 8;
     }else if(caseDepartString == "B2") {
-        caseDepart = Position2D(2,2);
+        caseDepart = Position2D(1,1);
         labelDepart = 9;
     }else if(caseDepartString == "B3") {
-        caseDepart = Position2D(2,3);
+        caseDepart = Position2D(1,2);
         labelDepart = 10;
     }else if(caseDepartString == "C1") {
-        caseDepart = Position2D(3,1);
+        caseDepart = Position2D(2,0);
         labelDepart = 7;
     }else if(caseDepartString == "C2") {
-        caseDepart = Position2D(3,2);
+        caseDepart = Position2D(2,1);
         labelDepart = 6;
     }else if(caseDepartString == "C3") {
-        caseDepart = Position2D(3,3);
+        caseDepart = Position2D(2,2);
         labelDepart = 5;
     }
 
     caseArriveeString = ui->comboBox_arrivee->currentText(); // on sélectionne la case d'arrivée
     if(caseArriveeString == "A1"){
-        caseArrivee = Position2D(1,1);
+        caseArrivee = Position2D(0,0);
         labelArrivee = 2;
     }else if (caseArriveeString == "A2") {
-        caseArrivee = Position2D(1,2);
+        caseArrivee = Position2D(0,1);
         labelArrivee = 4;
     }else if (caseArriveeString == "A3") {
-        caseArrivee = Position2D(1,3);
+        caseArrivee = Position2D(0,2);
         labelArrivee = 3;
     }else if (caseArriveeString == "B1") {
-        caseArrivee = Position2D(2,1);
+        caseArrivee = Position2D(1,0);
         labelArrivee = 8;
     }else if (caseArriveeString == "B2") {
-        caseArrivee = Position2D(2,2);
+        caseArrivee = Position2D(1,1);
         labelArrivee = 9;
     }else if (caseArriveeString == "B3") {
-        caseArrivee = Position2D(2,3);
+        caseArrivee = Position2D(1,2);
         labelArrivee = 10;
     }else if (caseArriveeString == "C1") {
-        caseArrivee = Position2D(3,1);
+        caseArrivee = Position2D(2,0);
         labelArrivee = 7;
     }else if (caseArriveeString == "C2") {
-        caseArrivee = Position2D(3,2);
+        caseArrivee = Position2D(2,1);
         labelArrivee = 6;
     }else if (caseArriveeString == "C3") {
-        caseArrivee = Position2D(3,3);
+        caseArrivee = Position2D(2,2);
         labelArrivee = 5;
     }
 
@@ -405,14 +401,18 @@ void MainWindow::on_pushButton_ok_clicked()
            letsPlay(caseDepart, caseArrivee, nbPions, WHITE);
            color = BLACK;
        }else{
-           //Rendre le layout vertical innacessible et faire jouer l'ia
+           color = BLACK;
+           ui->pushButton_ok->setEnabled(false);
+           iaPlay();
        }
     }else{
         if(joueur2 == 1){
             letsPlay(caseDepart, caseArrivee, nbPions, BLACK);
             color = WHITE;
         }else{
-            //Rendre le layout vertical innacessible et faire jouer l'ia
+            color = WHITE;
+            ui->pushButton_ok->setEnabled(false);
+            iaPlay();
         }
     }
 
@@ -888,15 +888,15 @@ void MainWindow::letsPlay(const Position2D& firstStack,  const Position2D& secon
     Position2D firstStack;  //Position de la pile de depart (X et Y)
     Position2D secondStack; //Position de la pile d'arrivee (X et Y)**/
 
-    vector<stack<Pion> >* board = jeu->getBoard();   //Recuperation du plateau de jeu
-    if(!jeu->isItEnd())
+    vector<stack<Pion> >* board = jeu.getBoard();   //Recuperation du plateau de jeu
+    if(!jeu.isItEnd())
     {
         /* Action joueur */
-        if(jeu->autorizedMove(firstStack, secondStack, n, c))
+        if(jeu.autorizedMove(firstStack, secondStack, n, c))
         {
-            jeu->moveStack(board[0][3*firstStack.getY()+firstStack.getX()], board[0][3*secondStack.getY()+secondStack.getX()], n);
+            jeu.moveStack(board[0][3*firstStack.getY()+firstStack.getX()], board[0][3*secondStack.getY()+secondStack.getX()], n);
         }
-        if(jeu->isItEnd())
+        if(jeu.isItEnd())
         {
             if(c==WHITE)
             {
@@ -912,4 +912,123 @@ void MainWindow::letsPlay(const Position2D& firstStack,  const Position2D& secon
     else
     fprintf(stderr, "\nERREUR : Le jeu est fini mais le joueur suivant peut quand même rejouer");
 
+}
+
+void MainWindow::iaPlay(){
+    int  nbPions, labelDepart, labelArrivee;
+    Position2D caseDepart, caseArrivee;
+
+    caseDepart = MinMax(jeu, BLACK, 2).getFirstStack(); // On récupére les choix de l'ia
+    caseArrivee = MinMax(jeu, BLACK, 2).getSecondStack();
+    nbPions = MinMax(jeu, BLACK, 2).getN();
+
+    switch(caseDepart.getX()){
+    case 0:
+        switch(caseDepart.getY()){
+        case 0:
+            labelDepart = 2;
+            break;
+        case 1:
+            labelDepart = 4;
+            break;
+        case 2:
+            labelDepart = 3;
+            break;
+        default :
+            break;
+        }
+        break;
+    case 1:
+        switch(caseDepart.getY()){
+        case 0:
+            labelDepart = 8;
+            break;
+        case 1:
+            labelDepart = 9;
+            break;
+        case 2:
+            labelDepart = 10;
+            break;
+        default :
+            break;
+        }
+        break;
+    case 2:
+        switch(caseDepart.getY()){
+        case 0:
+            labelDepart = 7;
+            break;
+        case 1:
+            labelDepart = 6;
+            break;
+        case 2:
+            labelDepart = 1;
+            break;
+        default :
+            break;
+        }
+        break;
+    default:
+        break;
+    }
+
+    switch(caseArrivee.getX()){
+    case 0:
+        switch(caseArrivee.getY()){
+        case 0:
+            labelArrivee = 2;
+            break;
+        case 1:
+            labelArrivee = 4;
+            break;
+        case 2:
+            labelArrivee = 3;
+            break;
+        default :
+            break;
+        }
+        break;
+    case 1:
+        switch(caseArrivee.getY()){
+        case 0:
+            labelArrivee = 8;
+            break;
+        case 1:
+            labelArrivee = 9;
+            break;
+        case 2:
+            labelArrivee = 10;
+            break;
+        default :
+            break;
+        }
+        break;
+    case 2:
+        switch(caseArrivee.getY()){
+        case 0:
+            labelArrivee = 7;
+            break;
+        case 1:
+            labelArrivee = 6;
+            break;
+        case 2:
+            labelArrivee= 1;
+            break;
+        default :
+            break;
+        }
+        break;
+    default:
+        break;
+    }
+
+    changeBoard(labelDepart, labelArrivee, nbPions); // on fait jouer l'ia
+
+    if(color==BLACK){
+        color=WHITE;
+    }else{
+        color=BLACK;
+    }
+
+    ui->pushButton_ok->setEnabled(true);
 }

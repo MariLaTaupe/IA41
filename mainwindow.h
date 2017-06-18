@@ -7,7 +7,9 @@
 #include <QLabel>
 
 #include "nouvellepartie.h"
-#include "Jeu.h"
+//#include "Jeu.h"
+#include "IA.h"
+//#include "Action.h"
 
 
 namespace Ui {
@@ -33,10 +35,11 @@ public slots:
     void changeBoard(int labelDepart, int labelArrivee, int nbPions); // c'est trois fonctions se succédent pour changer la position des pions
     void changeBoard(int depart[5], int labelArrivee, int nbPions); // en fonction des cases de départ et d'arrivée et du nombre de pions
     void changeBoard(int depart[5], int arrivee[5], int nbPions);
+    void iaPlay();
 
 private:
     Ui::MainWindow *ui;
-    Jeu* jeu;
+    Jeu jeu;
     int joueur1;
     int joueur2;
     Color color;

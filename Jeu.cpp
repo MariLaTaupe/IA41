@@ -24,14 +24,14 @@ Jeu::Jeu()
         if(i==0 || i==1 || i==2)
         {
 
-            s.push(Pion(WHITE, Position2D(i, 0)));
-            s.push(Pion(WHITE, Position2D(i, 0)));
+            s.push(Pion(WHITE));
+            s.push(Pion(WHITE));
         }
         /*On place 2 pions noirs sur chaque case de la rangee du bas (case 6, 7, 8)*/
         if(i==6 || i==7 || i==8)
         {
-            s.push(Pion(BLACK, Position2D(i%3, 3)));
-            s.push(Pion(BLACK, Position2D(i%3, 3)));
+            s.push(Pion(BLACK));
+            s.push(Pion(BLACK));
         }
         _board.push_back(s);
     }

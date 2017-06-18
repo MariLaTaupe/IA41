@@ -29,7 +29,9 @@ SOURCES += \
     main.cpp \
     Jeu.cpp \
     Pion.cpp \
-    Position2D.cpp
+    Position2D.cpp \
+    Action.cpp \
+    IA.cpp
 
 HEADERS += \
     nouvellepartie.h \
@@ -37,7 +39,9 @@ HEADERS += \
     Jeu.h \
     Pion.h \
     Position2D.h \
-    letsPLay.h
+    letsPLay.h \
+    Action.h \
+    IA.h
 
 FORMS += \
         mainwindow.ui \
