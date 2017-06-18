@@ -3,9 +3,6 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "nouvellepartie.h"
-#include "ui_nouvellepartie.h"
-
 
 using namespace std;
 
@@ -347,6 +344,8 @@ void MainWindow::on_pushButton_ok_clicked()
     Position2D caseDepart, caseArrivee;
     QString caseDepartString, caseArriveeString;
 
+    ui->pushButton_ok->setEnabled(false);
+
     nbPions = ui->comboBox_pions->currentText().toInt(&ok, 10);
 
     caseDepartString = ui->comboBox_depart->currentText(); // on selectionne la case de départ
@@ -411,26 +410,30 @@ void MainWindow::on_pushButton_ok_clicked()
 
     if(color == WHITE){ // on lance letsPlay()
        if(joueur1 == 1){
-           letsPlay(caseDepart, caseArrivee, nbPions, WHITE);
-           color = BLACK;
+           if(letsPlay(caseDepart, caseArrivee, nbPions, WHITE)){
+               color = BLACK;
+               changeBoard(labelDepart, labelArrivee, nbPions);
+               displayLabel();
+           }
+           ui->pushButton_ok->setEnabled(true);
        }else{
            color = BLACK;
-           ui->pushButton_ok->setEnabled(false);
            iaPlay();
        }
     }else{
         if(joueur2 == 1){
-            letsPlay(caseDepart, caseArrivee, nbPions, BLACK);
-            color = WHITE;
+            if(letsPlay(caseDepart, caseArrivee, nbPions, BLACK)){
+                color = WHITE;
+                changeBoard(labelDepart, labelArrivee, nbPions);
+                displayLabel();
+                ui->pushButton_ok->setEnabled(true);
+            }
         }else{
             color = WHITE;
-            ui->pushButton_ok->setEnabled(false);
             iaPlay();
         }
     }
 
-    changeBoard(labelDepart, labelArrivee, nbPions);
-    displayLabel();
 
 }
 
