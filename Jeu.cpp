@@ -1,8 +1,14 @@
+/*
+ *  Created by P. Daudre-Treuil and A.S Berre on 06/2017
+ */
+
 #include<iostream>
 #include<math.h>
-
 #include"Jeu.h"
 
+/**
+ * Fonctions associees au jeu Pogo (plateau, piles de pion et regles). Les entetes des fonctions sont disponibles dans le fichier "Jeu.h"
+ */
 
 /**
  * Constructeur par défaut.
@@ -10,24 +16,23 @@
 Jeu::Jeu()
 {
     int i=0;
-    //on initialize le vecteur des piles
+    /*on initialise le vecteur des piles*/
     for(i=0; i<9; i++)
     {
         stack<Pion> s;
-        //On place 2 pions blancs sur chaque case de la rangee du haut (case 0, 1, 2)
+        /*On place 2 pions blancs sur chaque case de la rangee du haut (case 0, 1, 2)*/
         if(i==0 || i==1 || i==2)
         {
 
             s.push(Pion(WHITE, Position2D(i, 0)));
             s.push(Pion(WHITE, Position2D(i, 0)));
         }
-        //On place 2 pions noirs sur chaque case de la rangee du bas (case 6, 7, 8)
+        /*On place 2 pions noirs sur chaque case de la rangee du bas (case 6, 7, 8)*/
         if(i==6 || i==7 || i==8)
         {
             s.push(Pion(BLACK, Position2D(i%3, 3)));
             s.push(Pion(BLACK, Position2D(i%3, 3)));
         }
-
         _board.push_back(s);
     }
 
@@ -39,21 +44,17 @@ Jeu::Jeu()
  */
 Jeu::Jeu(Jeu& j)
 {
-vector<stack<Pion> >* board = j.getBoard();
-this->_board=board[0];
-delete(board);
+    vector<stack<Pion> >* board = j.getBoard();
+    this->_board=board[0];
 }
 
 /**
  * Operateur d'affection pour les objets "Jeu".
- * @param j : Objet à affecter.
- * @return  L'objet qui a re_u l'affectation.
  */
 Jeu& Jeu::operator=(Jeu& j)
 {
     vector<stack<Pion> >* board = j.getBoard();
     this->_board=j.getBoard()[0];
-    delete(board);
     return *this;
 }
 
@@ -80,20 +81,20 @@ bool Jeu::moveStack(stack<Pion> &stack1, stack<Pion> &stack2, int n)
     {
         if(stack1.size()>=n)
         {
-            stack<Pion> s; //Pile pour stocker les n pions à deplacer
-            //On depile les n premiers pions de stack1 et on les empile dans s.
+            stack<Pion> s; /*Pile pour stocker les n pions à deplacer*/
+            /*On depile les n premiers pions de stack1 et on les empile dans s*/
             for(int i=0; i<n; i++)
             {
                 s.push((Pion &&) stack1.top());
                 stack1.pop();
             }
-            //On depile les n premiers pions de s et on les empile dans stack2.
+            /*On depile les n premiers pions de s et on les empile dans stack2*/
             for(int i=0; i<n; i++)
             {
                 stack2.push((Pion &&) s.top());
                 s.pop();
             }
-            return true; //On retourne vrai une fois les n pions deplaces.
+            return true; /*On retourne vrai une fois les n pions deplaces*/
         }
         else
         {
@@ -103,7 +104,6 @@ bool Jeu::moveStack(stack<Pion> &stack1, stack<Pion> &stack2, int n)
     {
         return false;
     }
-
 }
 
 /**
@@ -115,14 +115,20 @@ bool Jeu::moveStack(stack<Pion> &stack1, stack<Pion> &stack2, int n)
  * @return vrai si le mouvement est valide, faus sinon
  */
 bool Jeu::autorizedMove(const Position2D &stack1, const Position2D &stack2, int n, Color playerColor) {
-    //Si la valeur de n est correcte
-    // (comprise entre 1 et 3, et inferieure ou egale au nombre de pions de la pile a debiter)
-    if (n >= 1 && n <= 3 && _board[3*stack1.getY()+stack1.getX()].size() >= n) {
-        //Si le pion superieur est de la couleur du joueur (couleur passee en parametre)
-        if (_board[3*stack1.getY()+stack1.getX()].top().getColor() == playerColor) {
-            //Si la distance entre les pions au carre vaut n, le mouvement est bon.
+
+    /* Si la valeur de n est correcte (comprise entre 1 et 3, et inferieure ou egale au nombre de pions de la pile a
+     * debiter)
+     */
+    if (n >= 1 && n <= 3 && _board[3*stack1.getY()+stack1.getX()].size() >= n)
+    {
+
+        if (_board[3*stack1.getY()+stack1.getX()].top().getColor() == playerColor) /*Si le pion superieur est de la
+         * couleur du joueur (couleur passee en parametre)*/
+        {
+
             if (fabs((stack1.getX() - stack2.getX())) +
-                     fabs((stack1.getY() - stack2.getY())) == n)
+                     fabs((stack1.getY() - stack2.getY())) == n)    /*Si la distance entre les pions au carre vaut n, le
+                                                                     * mouvement est bon*/
             {
                 return true;
             }
@@ -130,24 +136,6 @@ bool Jeu::autorizedMove(const Position2D &stack1, const Position2D &stack2, int 
     }
     return false;
 }
-/**bool Jeu::autorizedMove(stack<Pion> &stack1, stack<Pion> &stack2, int n, Color playerColor) {
-    //Si la valeur de n est correcte
-    // (comprise entre 1 et 3, et inferieure ou egale au nombre de pions de la pile a debiter)
-    if(n>=1 && n<=3 && stack1.size()>=n)
-    {
-        //Si le pion superieur est de la couleur du joueur (couleur passee en parametre)
-        if(stack1.top().getColor()==playerColor)
-        {
-            //Si la distance entre les pions au carre vaut n, le mouvement est bon.
-            if( fabs((stack1.top().getPosition().getX()-stack2.top().getPosition().getX()) +
-                     (stack1.top().getPosition().getY()-stack2.top().getPosition().getY()))==n)
-            {
-                return true;
-            }
-        }
-    }
-    return false;
-}*/
 
 /**
  * Verifie si le jeu est termine ou non, et su oui, affiche le joueur gagnant
@@ -193,14 +181,14 @@ bool Jeu::isItEnd()
     {
         //Sinon, toute les colonnes ont un pion superieur de la meme couleur, le jeu est termine,
         //et color contient la couleur du gagnant (Blanc : joueur 1, Noir : joueur 2)
-        if(c==WHITE)
+        /**if(c==WHITE)
         {
             cout << "\nLe joueur 1 a gagne";
         }
         else
         {
             cout << "\nLe joueur 2 a gagne";
-        }
+        }*/
         return true;
     }
 }
@@ -216,7 +204,6 @@ void Jeu::printGame()
         if(!_board[i].empty())
         {
             cout << "\nA l'emplacement : " << i << " ";
-            _board[i].top().getPosition().printCoordinates();
             cout << " Pion du dessus : " << this->_board[i].top().getColorS();
         }
         else
