@@ -32,9 +32,6 @@
     <property name="frameShape">
      <enum>QFrame::Panel</enum>
     </property>
-    <property name="text">
-     <string>Veuillez Sélectionner &quot;Nouvelle Partie&quot;</string>
-    </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
@@ -186,8 +183,8 @@
    <widget class="QLabel" name="label_A">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>10</y>
+      <x>10</x>
+      <y>130</y>
       <width>59</width>
       <height>18</height>
      </rect>
@@ -199,8 +196,8 @@
    <widget class="QLabel" name="label_B">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>10</y>
+      <x>20</x>
+      <y>330</y>
       <width>59</width>
       <height>18</height>
      </rect>
@@ -212,8 +209,8 @@
    <widget class="QLabel" name="label_C">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>10</y>
+      <x>10</x>
+      <y>520</y>
       <width>59</width>
       <height>18</height>
      </rect>
@@ -225,8 +222,8 @@
    <widget class="QLabel" name="label_un">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>140</y>
+      <x>130</x>
+      <y>10</y>
       <width>59</width>
       <height>18</height>
      </rect>
@@ -238,8 +235,8 @@
    <widget class="QLabel" name="label_trois">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>530</y>
+      <x>550</x>
+      <y>10</y>
       <width>59</width>
       <height>18</height>
      </rect>
@@ -251,8 +248,8 @@
    <widget class="QLabel" name="label_deux">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>310</y>
+      <x>330</x>
+      <y>10</y>
       <width>59</width>
       <height>18</height>
      </rect>
@@ -482,15 +479,6 @@
      <height>30</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFichier">
-    <property name="title">
-     <string>Fi&amp;chier</string>
-    </property>
-    <addaction name="actionNouvelle_Partie"/>
-    <addaction name="separator"/>
-    <addaction name="actionQuitter"/>
-   </widget>
-   <addaction name="menuFichier"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">

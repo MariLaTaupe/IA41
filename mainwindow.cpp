@@ -1,5 +1,6 @@
 #include <iostream>
 #include <QInputDialog>
+#include <QMessageBox>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -18,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QStringList items;
     items << "Humain" << "IA faible" << "IA moyenne" << "IA forte";
     bool ok;
-    QString item = QInputDialog::getItem(this, "Veuillez choisir votre deuxième joueur","Humain", items, 0, false, &ok);
+    QString item = QInputDialog::getItem(this, "Paramêtres","Veuillez choisir votre deuxième joueur", items, 0, false, &ok);
 
     if(item == "Humain"){
         joueur2 = 1;
@@ -414,6 +415,8 @@ void MainWindow::on_pushButton_ok_clicked()
                color = BLACK;
                changeBoard(labelDepart, labelArrivee, nbPions);
                displayLabel();
+           }else{
+               QMessageBox::information(this,"Erreur","Mouvement invalide");
            }
            ui->pushButton_ok->setEnabled(true);
        }else{
@@ -427,6 +430,8 @@ void MainWindow::on_pushButton_ok_clicked()
                 changeBoard(labelDepart, labelArrivee, nbPions);
                 displayLabel();
                 ui->pushButton_ok->setEnabled(true);
+            }else{
+                QMessageBox::information(this,"Erreur","Mouvement invalide");
             }
         }else{
             color = WHITE;
@@ -917,18 +922,19 @@ bool MainWindow::letsPlay(const Position2D& firstStack,  const Position2D& secon
         {
             return false;
         }
-        /**if(jeu.isItEnd())
+        if(jeu.isItEnd())
         {
             if(c==WHITE)
             {
-                //Le joueur 1 a gagne
+                QMessageBox::information(NULL, "Victoire", "Le joueur 1 a gagné, félicitation!");
+                this->close();
             }
             else
             {
-                //Le joueur 2 a gagne
+                QMessageBox::information(NULL, "Victoire", "Le joueur 2 a gagné, félicitation!");
+                this->close();
             }
-            //Affichage resultats
-        }*/
+        }
     }
     else
     fprintf(stderr, "\nERREUR : Le jeu est fini mais le joueur suivant peut quand même rejouer");
