@@ -5,7 +5,7 @@
 #include "nouvellepartie.h"
 #include "ui_nouvellepartie.h"
 
-// TODO : c'autoconnect bug pour on_trux_indexchanged
+// TODO : mettre des sécurité partout !
 
 using namespace std;
 
@@ -101,7 +101,7 @@ void MainWindow::displayLabel(){
     wid = ui->label_2->geometry().width();
     hei = ui->label_2->geometry().height();
 
-    QPixmap pixmap2(wid,hei);
+    QPixmap pixmap2(wid,hei); // on crée un pixmap par label
     pixmap2.fill(QColor("white"));
     QPainter painter2(&pixmap2);
 
@@ -139,7 +139,7 @@ void MainWindow::displayLabel(){
 
     int i=0;
 
-    for(i=0;i<4;++i){
+    for(i=0;i<4;++i){ // on dessine les pions étage par étage pour tout les labels
         if(pionsLabel2[i] != -1){
             if(pionsLabel2[i] == 1){
                 painter2.setBrush(QBrush(Qt::red));
@@ -223,7 +223,7 @@ void MainWindow::displayLabel(){
 
     }
 
-    ui->label_2->setPixmap(pixmap2);
+    ui->label_2->setPixmap(pixmap2); // on affiche les pixmaps
     ui->label_3->setPixmap(pixmap3);
     ui->label_4->setPixmap(pixmap4);
     ui->label_5->setPixmap(pixmap5);
@@ -236,7 +236,7 @@ void MainWindow::displayLabel(){
 }
 
 void MainWindow::changeBoard(int labelDepart, int labelArrivee, int nbPions){
-    switch(labelDepart){
+    switch(labelDepart){ // on sélectionne la case de départ
     case 2:
         changeBoard(pionsLabel2, labelArrivee, nbPions);
         break;
@@ -271,7 +271,7 @@ void MainWindow::changeBoard(int labelDepart, int labelArrivee, int nbPions){
 }
 
 void MainWindow::changeBoard(int depart[5], int labelArrivee, int nbPions){
-    switch(labelArrivee){
+    switch(labelArrivee){ // on selectionne la case d'arrivée
     case 2:
         changeBoard(depart, pionsLabel2, nbPions);
         break;
@@ -307,7 +307,7 @@ void MainWindow::changeBoard(int depart[5], int labelArrivee, int nbPions){
 void MainWindow::changeBoard(int depart[5], int arrivee[5], int nbPions){
     int tmp[nbPions], i=4, j=nbPions;
 
-    for (i=4; i>-1; i--){
+    for (i=4; i>-1; i--){ // on récupère et efface les pions pris dans la case de départ
         if(depart[i] != -1){
             if(j != 0){
                 tmp[nbPions - j] = depart[i];
@@ -321,7 +321,7 @@ void MainWindow::changeBoard(int depart[5], int arrivee[5], int nbPions){
     i=0;
     j=0;
 
-    for (i=0; i<5; i++){
+    for (i=0; i<5; i++){ // on rajoute les pions dans la case d'arrivée
         if(arrivee[i] == -1){
             if(j != nbPions){
                 arrivee[i] = tmp[j];
@@ -340,7 +340,7 @@ void MainWindow::on_pushButton_ok_clicked()
 
     nbPions = ui->comboBox_pions->currentText().toInt(&ok, 10);
 
-    caseDepartString = ui->comboBox_depart->currentText();
+    caseDepartString = ui->comboBox_depart->currentText(); // on selectionne la case de départ
     if(caseDepartString == "A1"){
         caseDepart = Position2D(1,1);
         labelDepart = 2;
@@ -370,7 +370,7 @@ void MainWindow::on_pushButton_ok_clicked()
         labelDepart = 5;
     }
 
-    caseArriveeString = ui->comboBox_arrivee->currentText();
+    caseArriveeString = ui->comboBox_arrivee->currentText(); // on sélectionne la case d'arrivée
     if(caseArriveeString == "A1"){
         caseArrivee = Position2D(1,1);
         labelArrivee = 2;
@@ -400,7 +400,7 @@ void MainWindow::on_pushButton_ok_clicked()
         labelArrivee = 5;
     }
 
-    if(color == WHITE){
+    if(color == WHITE){ // on lance letsPlay()
        if(joueur1 == 1){
            letsPlay(caseDepart, caseArrivee, nbPions, WHITE);
            color = BLACK;
@@ -426,7 +426,7 @@ void MainWindow::on_comboBox_depart_currentIndexChanged(const QString &arg1)
     QStringList cb;
     bool ok;
 
-    switch(ui->comboBox_depart->currentIndex()+1){
+    switch(ui->comboBox_depart->currentIndex()+1){ // on choisit la liste des cases d'arrivée en fonction de la case de départ et du nombre de pions
     case 1:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:
@@ -653,7 +653,7 @@ void MainWindow::on_comboBox_pions_currentIndexChanged(const QString &arg1)
     QStringList cb;
     bool ok;
 
-    switch(ui->comboBox_depart->currentIndex()+1){
+    switch(ui->comboBox_depart->currentIndex()+1){ // on choisit la liste des cases d'arrivée en fonction de la case de départ et du nombre de pions
     case 1:
         switch (ui->comboBox_pions->currentText().toInt(&ok, 10)) {
         case 1:

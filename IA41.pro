@@ -24,7 +24,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-    clickablelabel.cpp \
     nouvellepartie.cpp \
     mainwindow.cpp \
     main.cpp \
@@ -33,7 +32,6 @@ SOURCES += \
     Position2D.cpp
 
 HEADERS += \
-    clickablelabel.h \
     nouvellepartie.h \
     mainwindow.h \
     Jeu.h \
